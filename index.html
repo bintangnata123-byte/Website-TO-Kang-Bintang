@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50 text-slate-800">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tryout TKA SMP - Bahasa Indonesia & Matematika</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            serif: ['Merriweather', 'Georgia', 'Cambria', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Inter & Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- KaTeX CSS & JS via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <!-- html2pdf.js via CDN (Pembuatan & Unduh Berkas PDF) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Fallback Script Data (untuk eksekusi file:// langsung tanpa web server) -->
+  <script src="paket1.js"></script>
+  <script src="paket2.js"></script>
+  <script src="paket3.js"></script>
+
+  <style>
+    /* Modern Dialog Styles per Modern Web Guidance */
+    dialog:modal {
+      overscroll-behavior: contain;
+    }
+    dialog::backdrop {
+      overflow: hidden;
+      overscroll-behavior: contain;
+      background-color: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Print Formatting */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      #laporan-pdf-card {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .print-break-inside-avoid {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col font-sans antialiased text-slate-800 bg-slate-50 selection:bg-brand-500 selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- TOP APP BAR -->
+  <!-- ========================================================================= -->
+  <header class="no-print sticky top-0 z-30 bg-white border-b border-slate-200 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Status Info -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-black text-xl shadow-md shadow-brand-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base font-bold text-slate-900 leading-tight flex items-center gap-2">
+            Tryout TKA SMP
+            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-brand-100 text-brand-800">
+              Resmi 2026
+            </span>
+          </h1>
+          <p id="top-sub-info" class="text-xs text-slate-500">Bahasa Indonesia & Matematika</p>
+        </div>
+      </div>
+
+      <!-- Center & Right Controls -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        
+        <!-- Live Countdown Timer (Visible only during exam) -->
+        <div id="exam-timer-wrapper" class="hidden items-center">
+          <div id="exam-timer-badge" class="flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full font-mono text-sm sm:text-base font-bold bg-slate-100 text-slate-700 border border-slate-200 transition-colors">
+            <svg class="w-4 h-4 text-slate-500 animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span id="exam-timer-text">45:00</span>
+          </div>
+        </div>
+
+        <!-- Mobile Drawer Toggle Button (Visible only during exam on mobile) -->
+        <button id="btn-toggle-drawer" type="button" class="hidden lg:hidden items-center justify-center p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200" title="Buka Daftar Soal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+
+        <!-- Top Selesai Button (Exam view) -->
+        <button id="btn-top-finish" type="button" class="hidden text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition">
+          Selesai Ujian
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN CONTAINER (SWAPPING VIEWS) -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 flex flex-col">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 1: LOBBY (HALAMAN AWAL) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="view-lobby" class="flex-1 max-w-5xl mx-auto w-full px-4 py-8 sm:py-12 flex flex-col justify-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Banner & Petunjuk -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Sistem Siap Digunakan
+          </div>
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              Simulasi & Tryout Tes Kemampuan Akademik (TKA)
+            </h2>
+            <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+              Persiapkan diri menghadapi TKA SMP dengan format asesmen modern: Pilihan Ganda (PG), Pilihan Ganda Kompleks Centang (PGK MCMA), dan Tabel Kategori.
+            </p>
+          </div>
+
+          <!-- Feature Cards -->
+          <div class="space-y-3 pt-2">
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="w-9 h-9 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-base shrink-0">
+                ⏱️
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900">Durasi Ujian 45 Menit</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Waktu otomatis berjalan mundur dan ujian otomatis dikumpulkan bila waktu habis.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-base shrink-0">
+                📄
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900">Laporan Hasil Diagnostik & Unduh PDF</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Dapatkan rekap nilai, identifikasi materi yang dikuasai vs perlu perbaikan, dan unduh PDF resmi.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-xs">
+              <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-base shrink-0">
+                📊
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900">Skor Instan & Pembahasan Lengkap</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Langsung ketahui nilai akhir (skala 100) serta telaah pembahasan mendalam di setiap nomor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Registration Form Card -->
+        <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8">
+          <div class="border-b border-slate-100 pb-5 mb-6">
+            <h3 class="text-xl font-bold text-slate-900">Formulir Peserta Ujian</h3>
+            <p class="text-xs text-slate-500 mt-1">Lengkapi data identitas dan tentukan paket serta mata uji yang ingin Anda kerjakan.</p>
+          </div>
+
+          <!-- Alert Error (Hidden by default) -->
+          <div id="lobby-error-alert" class="hidden mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-sm flex items-start gap-3" role="alert">
+            <svg class="w-5 h-5 text-rose-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <div class="flex-1">
+              <p id="lobby-error-msg" class="font-medium">Pesan kesalahan akan muncul di sini.</p>
+            </div>
+          </div>
+
+          <form id="form-lobby" class="space-y-6">
+            
+            <!-- Input Nama Siswa -->
+            <div>
+              <label for="input-nama" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Nama Lengkap Siswa <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="input-nama" required placeholder="Contoh: Muhammad Rizki Pratama"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition">
+            </div>
+
+            <!-- Input Sekolah / Kelas -->
+            <div>
+              <label for="input-sekolah" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                Asal Sekolah & Kelas <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="input-sekolah" required placeholder="Contoh: SMP Negeri 1 Jakarta / Kelas 9A"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition">
+            </div>
+
+            <!-- Pilihan Paket Tryout -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                Pilih Paket Soal <span class="text-rose-500">*</span>
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="relative flex flex-col p-3 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-brand-300 transition has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50">
+                  <input type="radio" name="paket" value="paket1" checked class="sr-only">
+                  <span class="text-xs font-bold text-slate-900">Paket 1: Dasar</span>
+                  <span class="text-[11px] text-slate-500 mt-1">paket1.json</span>
+                  <span class="text-[10px] text-brand-600 font-semibold mt-1">Tingkat Fondasi</span>
+                </label>
+
+                <label class="relative flex flex-col p-3 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-brand-300 transition has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50">
+                  <input type="radio" name="paket" value="paket2" class="sr-only">
+                  <span class="text-xs font-bold text-slate-900">Paket 2: Lanjut</span>
+                  <span class="text-[11px] text-slate-500 mt-1">paket2.json</span>
+                  <span class="text-[10px] text-indigo-600 font-semibold mt-1">Tingkat Analisis</span>
+                </label>
+
+                <label class="relative flex flex-col p-3 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-brand-300 transition has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50">
+                  <input type="radio" name="paket" value="paket3" class="sr-only">
+                  <span class="text-xs font-bold text-slate-900">Paket 3: Pemantapan</span>
+                  <span class="text-[11px] text-slate-500 mt-1">paket3.json</span>
+                  <span class="text-[10px] text-purple-600 font-semibold mt-1">Tingkat HOTS</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Pilihan Mata Uji -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                Pilih Mata Uji <span class="text-rose-500">*</span>
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3.5 p-3.5 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-brand-300 transition has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50">
+                  <input type="radio" name="mataUji" value="bahasaIndonesia" checked class="sr-only">
+                  <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-lg shrink-0">
+                    📖
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-slate-900">Bahasa Indonesia</h5>
+                    <p class="text-[11px] text-slate-500">Literasi Teks, Fiksi & Informasi (15 Soal)</p>
+                  </div>
+                </label>
+
+                <label class="flex items-center gap-3.5 p-3.5 rounded-xl border-2 border-slate-200 cursor-pointer hover:border-brand-300 transition has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50">
+                  <input type="radio" name="mataUji" value="matematika" class="sr-only">
+                  <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-lg shrink-0">
+                    📐
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-slate-900">Matematika</h5>
+                    <p class="text-[11px] text-slate-500">Bilangan, Aljabar & Geometri (15 Soal)</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Tombol Mulai Ujian -->
+            <button type="submit" id="btn-start-exam"
+              class="w-full py-3.5 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-base shadow-lg shadow-brand-500/25 transition duration-150 flex items-center justify-center gap-2">
+              <span id="btn-start-text">Mulai Ujian Sekarang</span>
+              <svg id="btn-start-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+              <svg id="btn-start-spinner" class="hidden w-5 h-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+              </svg>
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 2: EXAM (HALAMAN PENGERJAAN SOAL) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="view-exam" class="hidden flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
+      
+      <!-- Sub-header: Current Question Info -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200">
+        <div class="flex items-center gap-2.5">
+          <span id="badge-soal-no" class="px-3 py-1 rounded-lg bg-brand-600 text-white font-bold text-sm">
+            Soal No. 1
+          </span>
+          <span id="badge-soal-tipe" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+            Pilihan Ganda (PG)
+          </span>
+          <span id="badge-soal-elemen" class="hidden px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            Elemen
+          </span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-slate-500">
+            Peserta: <strong id="exam-user-name" class="text-slate-800">Nama Siswa</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Question Body Grid -->
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
+        
+        <!-- Left / Top Column: Stimulus Reader Pane (Conditional) -->
+        <div id="pane-stimulus-wrapper" class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col max-h-[70vh]">
+          <div class="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              Teks Stimulus Bacaan
+            </h3>
+            <span id="stimulus-group-badge" class="text-[11px] font-semibold px-2 py-0.5 rounded bg-brand-100 text-brand-800">
+              Grup Soal 1-3
+            </span>
+          </div>
+
+          <div id="pane-stimulus-content" class="p-5 overflow-y-auto space-y-4 text-sm text-slate-700 leading-relaxed font-serif">
+            <!-- Stimulus text injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Center Column: Question & Answers Input Area -->
+        <div id="pane-question-wrapper" class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between min-h-[500px]">
+          
+          <div class="space-y-6">
+            <!-- Question Text -->
+            <div id="box-pertanyaan" class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed">
+              <!-- Pertanyaan injected dynamically -->
+            </div>
+
+            <!-- Dynamic Answer Form Based on Question Type -->
+            <div id="box-jawaban-controls" class="space-y-3 pt-2">
+              <!-- Rendered dynamically (PG, PGK_MCMA, PGK_KATEGORI) -->
+            </div>
+          </div>
+
+          <!-- Bottom Question Navigation & Ragu-ragu -->
+          <div class="pt-8 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 mt-8">
+            <button type="button" id="btn-prev-soal"
+              class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-sm transition flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              <span>Sebelumnya</span>
+            </button>
+
+            <!-- Ragu-ragu Toggle -->
+            <label id="label-ragu-ragu"
+              class="px-4 py-2.5 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100/80 text-amber-900 font-semibold text-xs sm:text-sm cursor-pointer select-none transition flex items-center gap-2 has-[:checked]:bg-amber-400 has-[:checked]:text-amber-950 has-[:checked]:border-amber-500 shadow-xs">
+              <input type="checkbox" id="check-ragu-ragu" class="sr-only">
+              <svg class="w-4 h-4 text-amber-700" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd" />
+              </svg>
+              <span>Ragu-ragu</span>
+            </label>
+
+            <button type="button" id="btn-next-soal"
+              class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md shadow-brand-500/20 transition flex items-center gap-1.5">
+              <span>Selanjutnya</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sidebar Navigation Grid (Desktop View) -->
+        <aside class="hidden lg:block lg:col-span-12 xl:col-span-12 bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Navigasi Nomor Soal</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Klik nomor soal untuk berpindah dengan cepat</p>
+            </div>
+            
+            <!-- Question Stats Legend -->
+            <div class="flex items-center gap-4 text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3.5 h-3.5 rounded bg-emerald-600"></span>
+                <span class="text-slate-600">Dijawab (<strong id="stat-count-answered">0</strong>)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3.5 h-3.5 rounded bg-amber-400"></span>
+                <span class="text-slate-600">Ragu-ragu (<strong id="stat-count-ragu">0</strong>)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3.5 h-3.5 rounded bg-slate-200 border border-slate-300"></span>
+                <span class="text-slate-600">Belum (<strong id="stat-count-unanswered">15</strong>)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1-15 Numbers Grid -->
+          <div id="nav-numbers-grid" class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-15 gap-2.5 my-5">
+            <!-- Buttons 1 to 15 injected dynamically -->
+          </div>
+
+          <!-- Bottom Finish Action -->
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-end">
+            <button type="button" id="btn-bottom-finish"
+              class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Kumpulkan & Selesai Ujian</span>
+            </button>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- VIEW 3: RESULT & SOLUTIONS (SKOR, LAPORAN EVALUASI & PEMBAHASAN) -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="view-result" class="hidden flex-1 max-w-5xl mx-auto w-full px-4 py-8 sm:py-12 flex flex-col space-y-6">
+      
+      <!-- Top Action Toolbar Banner -->
+      <div class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-2xl shadow-xs">
+            🎉
+          </div>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">
+              Sesi Ujian Telah Selesai!
+            </h2>
+            <p id="res-top-summary-text" class="text-xs sm:text-sm text-slate-500">
+              Hasil pengerjaan dan analisis diagnosis kompetensi Anda telah siap.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5">
+          <!-- Tombol Utama Download PDF -->
+          <button type="button" id="btn-download-pdf"
+            class="px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm transition flex items-center gap-2 shadow-md shadow-brand-500/25">
+            <svg id="icon-download-pdf" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span id="text-download-pdf">Download Laporan (PDF)</span>
+          </button>
+
+          <!-- Cetak / Print -->
+          <button type="button" id="btn-print-results"
+            class="px-3.5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 font-semibold text-xs sm:text-sm text-slate-700 transition flex items-center gap-1.5 shadow-xs">
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span class="hidden sm:inline">Cetak</span>
+          </button>
+
+          <!-- Coba Paket Lain -->
+          <button type="button" id="btn-restart-tryout"
+            class="px-3.5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 font-semibold text-xs sm:text-sm text-slate-700 transition flex items-center gap-1.5 shadow-xs">
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span class="hidden sm:inline">Kembali ke Beranda</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mode Tabs Navigation: Laporan vs Pembahasan -->
+      <div class="no-print flex border-b border-slate-200">
+        <button type="button" id="tab-btn-laporan"
+          class="tab-nav-btn py-3 px-5 text-sm font-bold border-b-2 border-brand-600 text-brand-600 transition flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span>Laporan Hasil & Diagnosis Materi</span>
+        </button>
+
+        <button type="button" id="tab-btn-pembahasan"
+          class="tab-nav-btn py-3 px-5 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+          <span>Rincian Pembahasan Lengkap (1-15)</span>
+        </button>
+      </div>
+
+      <!-- TAB CONTENT 1: LAPORAN RESMI HASIL TRYOUT (Dapat di-download PDF & Print) -->
+      <div id="tab-content-laporan" class="space-y-6">
+        
+        <!-- THE PDF CONTAINER (TARGET FOR HTML2PDF & PRINT) -->
+        <div id="laporan-pdf-card" class="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-10 space-y-8 print-break-inside-avoid text-slate-800">
+          
+          <!-- 1. KOP DOKUMEN RESMI ASESMEN -->
+          <div class="border-b-2 border-slate-900 pb-5">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-black text-2xl shrink-0 shadow-sm">
+                  TKA
+                </div>
+                <div>
+                  <h3 class="text-xs uppercase tracking-widest font-extrabold text-slate-500">
+                    Sistem Evaluasi Asesmen Akademik Siswa SMP
+                  </h3>
+                  <h1 class="text-xl sm:text-2xl font-black text-slate-900 uppercase tracking-tight">
+                    Laporan Hasil Tryout & Diagnosis Kompetensi
+                  </h1>
+                  <p class="text-xs text-slate-600 mt-0.5 font-medium">
+                    Standar Asesmen Nasional • Berbasis Literasi Membaca & Penalaran Matematika
+                  </p>
+                </div>
+              </div>
+
+              <!-- Cap Resmi / Stempel Status -->
+              <div class="px-4 py-2 rounded-xl border-2 border-emerald-600 bg-emerald-50 text-emerald-800 text-center shrink-0">
+                <span class="block text-[10px] font-extrabold uppercase tracking-widest text-emerald-700">Status Lembar</span>
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-900">TERVALISASI RESMI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. IDENTITAS SISWA & PELAKSANAAN TRYOUT (Input awal) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50/80 p-5 rounded-2xl border border-slate-200 text-xs">
+            <div class="space-y-2">
+              <div class="flex justify-between py-1 border-b border-slate-200/60">
+                <span class="text-slate-500 font-medium">Nama Siswa:</span>
+                <strong id="pdf-student-name" class="text-slate-900 text-sm font-bold text-right">-</strong>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-200/60">
+                <span class="text-slate-500 font-medium">Asal Sekolah & Kelas:</span>
+                <strong id="pdf-student-school" class="text-slate-900 font-bold text-right">-</strong>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="text-slate-500 font-medium">Nomor Identifikasi / Ujian:</span>
+                <span id="pdf-exam-id" class="font-mono text-slate-700 font-semibold text-right">TKA-2026-001</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex justify-between py-1 border-b border-slate-200/60">
+                <span class="text-slate-500 font-medium">Paket Soal:</span>
+                <strong id="pdf-exam-paket" class="text-brand-700 font-bold text-right">-</strong>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-200/60">
+                <span class="text-slate-500 font-medium">Mata Uji:</span>
+                <strong id="pdf-exam-subject" class="text-slate-900 font-bold text-right">-</strong>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="text-slate-500 font-medium">Waktu Selesai:</span>
+                <span id="pdf-exam-timestamp" class="text-slate-700 font-medium text-right">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. REKAPITULASI SKOR & JAWABAN (Benar & Salah) -->
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+              A. Rekapitulasi Perolehan Nilai & Ketepatan Jawaban
+            </h4>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+              <!-- Nilai Akhir -->
+              <div class="p-4 rounded-2xl bg-gradient-to-br from-brand-50 to-indigo-50 border border-brand-200 shadow-xs">
+                <span class="text-[11px] font-bold uppercase text-brand-700 block">Nilai Akhir</span>
+                <div id="pdf-score-value" class="text-3xl sm:text-4xl font-black text-brand-900 mt-1">0</div>
+                <span class="text-[10px] text-brand-600 font-semibold mt-0.5 block">Skala 100</span>
+              </div>
+
+              <!-- Jawaban Benar -->
+              <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 shadow-xs">
+                <span class="text-[11px] font-bold uppercase text-emerald-700 block">Jawaban Benar</span>
+                <div class="flex items-baseline justify-center gap-1 mt-1">
+                  <span id="pdf-count-correct" class="text-3xl sm:text-4xl font-black text-emerald-700">0</span>
+                  <span class="text-xs text-emerald-600 font-semibold">/ 15</span>
+                </div>
+                <span id="pdf-percent-correct" class="text-[10px] text-emerald-600 font-semibold mt-0.5 block">0% Akurat</span>
+              </div>
+
+              <!-- Jawaban Salah / Kosong -->
+              <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 shadow-xs">
+                <span class="text-[11px] font-bold uppercase text-rose-700 block">Jawaban Salah</span>
+                <div class="flex items-baseline justify-center gap-1 mt-1">
+                  <span id="pdf-count-incorrect" class="text-3xl sm:text-4xl font-black text-rose-700">0</span>
+                  <span class="text-xs text-rose-600 font-semibold">/ 15</span>
+                </div>
+                <span class="text-[10px] text-rose-600 font-semibold mt-0.5 block">Perlu Evaluasi</span>
+              </div>
+
+              <!-- Predikat Kelulusan -->
+              <div class="p-4 rounded-2xl bg-slate-100 border border-slate-300 shadow-xs">
+                <span class="text-[11px] font-bold uppercase text-slate-600 block">Predikat Capaian</span>
+                <div id="pdf-predikat-grade" class="text-2xl sm:text-3xl font-black text-slate-800 mt-1.5">A</div>
+                <span id="pdf-predikat-desc" class="text-[10px] text-slate-600 font-semibold mt-0.5 block">Sangat Baik</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. ANALISIS DIAGNOSTIK MATERI: SUDAH DIKUASAI VS PERLU DIPERBAIKI -->
+          <div class="print-break-inside-avoid space-y-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+              B. Diagnosis Penguasaan Materi & Evaluasi Remedial
+            </h4>
+
+            <!-- Table breakdown per materi -->
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead class="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider">
+                  <tr>
+                    <th scope="col" class="py-2.5 px-3">Topik / Materi Pokok</th>
+                    <th scope="col" class="py-2.5 px-2 text-center">Nomor Soal</th>
+                    <th scope="col" class="py-2.5 px-2 text-center">Jml Soal</th>
+                    <th scope="col" class="py-2.5 px-2 text-center">Benar</th>
+                    <th scope="col" class="py-2.5 px-2 text-center">Salah</th>
+                    <th scope="col" class="py-2.5 px-2 text-center">Penguasaan (%)</th>
+                    <th scope="col" class="py-2.5 px-3 text-center">Status Diagnosis</th>
+                  </tr>
+                </thead>
+                <tbody id="pdf-materi-table-body" class="divide-y divide-slate-200 bg-white">
+                  <!-- Injected dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Two Column Comparison Cards: Dikuasai vs Perlu Diperbaiki -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              
+              <!-- Panel Kiri: Materi yang Sudah Dikuasai -->
+              <div class="rounded-2xl border-2 border-emerald-500/70 bg-emerald-50/40 p-5 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 pb-3 border-b border-emerald-200">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                      ✓
+                    </div>
+                    <div>
+                      <h5 class="text-sm font-bold text-emerald-950">Materi yang Sudah Dikuasai</h5>
+                      <span class="text-[11px] text-emerald-700 font-medium">Tingkat penguasaan $\ge 70\%$ (Kompeten)</span>
+                    </div>
+                  </div>
+
+                  <ul id="pdf-list-materi-mastered" class="mt-4 space-y-3 text-xs text-slate-700">
+                    <!-- Mastered items injected dynamically -->
+                  </ul>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-emerald-200/60 text-[11px] text-emerald-800 font-medium flex items-center gap-1.5">
+                  <span>💡</span>
+                  <span>Pertahankan pemahaman dan terus latih variasi soal berbobot tinggi.</span>
+                </div>
+              </div>
+
+              <!-- Panel Kanan: Materi yang Perlu Diperbaiki -->
+              <div class="rounded-2xl border-2 border-amber-500/70 bg-amber-50/40 p-5 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 pb-3 border-b border-amber-200">
+                    <div class="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                      !
+                    </div>
+                    <div>
+                      <h5 class="text-sm font-bold text-amber-950">Materi yang Perlu Diperbaiki</h5>
+                      <span class="text-[11px] text-amber-700 font-medium">Tingkat penguasaan $< 70\%$ (Perlu Remedial)</span>
+                    </div>
+                  </div>
+
+                  <ul id="pdf-list-materi-needs-work" class="mt-4 space-y-3 text-xs text-slate-700">
+                    <!-- Needs work items injected dynamically -->
+                  </ul>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-amber-200/60 text-[11px] text-amber-800 font-medium flex items-center gap-1.5">
+                  <span>📌</span>
+                  <span>Tinjau kembali kunci dan pembahasan pada nomor soal terkait di bawah.</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 5. TABEL LEMBAR JAWABAN PER NOMOR (Matriks 15 Soal) -->
+          <div class="print-break-inside-avoid">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+              C. Matriks Lembar Verifikasi Jawaban Siswa (No. 1 s.d. 15)
+            </h4>
+
+            <div class="overflow-x-auto rounded-xl border border-slate-200 text-xs">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-100 text-slate-700 font-bold uppercase">
+                  <tr>
+                    <th scope="col" class="py-2 px-2.5 text-center">No</th>
+                    <th scope="col" class="py-2 px-3">Materi Pokok</th>
+                    <th scope="col" class="py-2 px-2 text-center">Tipe</th>
+                    <th scope="col" class="py-2 px-3">Jawaban Anda</th>
+                    <th scope="col" class="py-2 px-3">Kunci Benar</th>
+                    <th scope="col" class="py-2 px-2.5 text-center">Hasil</th>
+                  </tr>
+                </thead>
+                <tbody id="pdf-matrix-table-body" class="divide-y divide-slate-200 bg-white">
+                  <!-- 15 rows injected dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 6. LEMBAR PENGESAHAN & TANDA TANGAN RESMI -->
+          <div class="print-break-inside-avoid pt-6 border-t-2 border-slate-200">
+            <div class="text-xs text-slate-600 flex justify-between items-center mb-8">
+              <span>Dicetak otomatis pada: <strong id="pdf-print-date">-</strong></span>
+              <span>Dokumen Hasil Evaluasi Resmi • Halaman 1 dari 1</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 text-center text-xs">
+              <div>
+                <p class="text-slate-500 font-medium mb-16">Peserta Ujian,</p>
+                <div class="w-32 border-b border-slate-400 mx-auto"></div>
+                <strong id="pdf-sign-student" class="block font-bold text-slate-900 mt-1">-</strong>
+                <span class="text-[10px] text-slate-500">Siswa Bersangkutan</span>
+              </div>
+
+              <div>
+                <p class="text-slate-500 font-medium mb-16">Orang Tua / Wali,</p>
+                <div class="w-32 border-b border-slate-400 mx-auto"></div>
+                <span class="block font-bold text-slate-900 mt-1">( ........................................ )</span>
+                <span class="text-[10px] text-slate-500">Tanda Tangan Orang Tua</span>
+              </div>
+
+              <div>
+                <p class="text-slate-500 font-medium mb-16">Guru Pembimbing / Asesor,</p>
+                <div class="w-32 border-b border-slate-400 mx-auto"></div>
+                <span class="block font-bold text-slate-900 mt-1">Tim Asesmen Akademik</span>
+                <span class="text-[10px] text-slate-500">NIP. ................................</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB CONTENT 2: RINCIAN PEMBAHASAN LENGKAP PER NOMOR -->
+      <div id="tab-content-pembahasan" class="hidden space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Rincian Pembahasan Soal</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Analisis jawaban peserta dan pembahasan terperinci dari nomor 1 s.d. 15</p>
+          </div>
+
+          <!-- Filter buttons -->
+          <div class="no-print inline-flex p-1 rounded-xl bg-slate-200/80 text-xs font-semibold">
+            <button type="button" class="filter-review-btn px-3 py-1.5 rounded-lg transition bg-white text-slate-900 shadow-xs" data-filter="all">
+              Semua Soal (15)
+            </button>
+            <button type="button" class="filter-review-btn px-3 py-1.5 rounded-lg transition text-slate-600 hover:text-slate-900" data-filter="correct">
+              Benar (<span id="filter-count-correct">0</span>)
+            </button>
+            <button type="button" class="filter-review-btn px-3 py-1.5 rounded-lg transition text-slate-600 hover:text-slate-900" data-filter="incorrect">
+              Salah (<span id="filter-count-incorrect">0</span>)
+            </button>
+          </div>
+        </div>
+
+        <!-- List of 15 Solution Cards -->
+        <div id="review-solutions-list" class="space-y-6">
+          <!-- Solution cards injected dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL DIALOGS (Per Modern Web Guidance: Native <dialog>) -->
+  <!-- ========================================================================= -->
+  
+  <!-- 1. Konfirmasi Kumpulkan Ujian -->
+  <dialog id="modal-confirm-submit" aria-labelledby="modal-confirm-title"
+    class="rounded-2xl p-0 w-full max-w-md bg-white shadow-2xl border border-slate-200 m-auto text-slate-800">
+    <div class="p-6">
+      <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-2xl mx-auto mb-4">
+        ⚠️
+      </div>
+      <h3 id="modal-confirm-title" class="text-lg font-bold text-slate-900 text-center">
+        Konfirmasi Kumpulkan Ujian
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-600 text-center mt-2">
+        Apakah Anda yakin ingin mengakhiri sesi tryout dan melihat hasil skor serta pembahasan?
+      </p>
+
+      <!-- Status Rekap Mini -->
+      <div class="my-5 p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+        <div class="flex justify-between text-slate-700">
+          <span>Sudah Dijawab:</span>
+          <strong id="modal-confirm-answered" class="text-emerald-700">0 Soal</strong>
+        </div>
+        <div class="flex justify-between text-slate-700">
+          <span>Ditandai Ragu-ragu:</span>
+          <strong id="modal-confirm-ragu" class="text-amber-700">0 Soal</strong>
+        </div>
+        <div class="flex justify-between text-slate-700">
+          <span>Belum Dijawab:</span>
+          <strong id="modal-confirm-unanswered" class="text-rose-700">0 Soal</strong>
+        </div>
+      </div>
+
+      <div id="modal-confirm-warning" class="hidden mb-4 p-3 rounded-lg bg-rose-50 border border-rose-200 text-xs text-rose-800 font-medium">
+        ⚠️ Masih terdapat soal yang belum dijawab atau ragu-ragu!
+      </div>
+
+      <form method="dialog" class="grid grid-cols-2 gap-3 mt-6">
+        <button type="button" id="btn-cancel-submit" autofocus
+          class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 font-semibold text-xs sm:text-sm text-slate-700 transition">
+          Lanjut Mengerjakan
+        </button>
+        <button type="button" id="btn-execute-submit"
+          class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 font-semibold text-xs sm:text-sm text-white transition shadow-sm">
+          Ya, Kumpulkan
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 2. Waktu Habis Alert -->
+  <dialog id="modal-time-up" aria-labelledby="modal-timeup-title"
+    class="rounded-2xl p-0 w-full max-w-md bg-white shadow-2xl border border-slate-200 m-auto text-slate-800">
+    <div class="p-6 text-center">
+      <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-3xl mx-auto mb-4">
+        ⏰
+      </div>
+      <h3 id="modal-timeup-title" class="text-xl font-bold text-slate-900">
+        Waktu Ujian Telah Habis!
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-600 mt-2">
+        Durasi 45 menit pengerjaan telah berakhir. Sistem secara otomatis mengumpulkan seluruh lembar jawaban Anda.
+      </p>
+
+      <button type="button" id="btn-timeup-confirm" autofocus
+        class="w-full mt-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md transition">
+        Lihat Hasil & Pembahasan
+      </button>
+    </div>
+  </dialog>
+
+  <!-- 3. Mobile Navigation Drawer Dialog -->
+  <dialog id="modal-mobile-nav" aria-labelledby="modal-nav-title"
+    class="rounded-t-2xl sm:rounded-2xl p-0 w-full max-w-md bg-white shadow-2xl border border-slate-200 fixed bottom-0 sm:m-auto text-slate-800">
+    <div class="p-5">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <h3 id="modal-nav-title" class="text-sm font-bold text-slate-900">Daftar Nomor Soal</h3>
+        <button type="button" id="btn-close-mobile-nav" class="text-slate-400 hover:text-slate-600 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobile-nav-numbers-grid" class="grid grid-cols-5 gap-2.5 my-4">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <form method="dialog" class="mt-4">
+        <button type="button" id="btn-mobile-finish-exam" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-sm">
+          Kumpulkan Jawaban
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ========================================================================= -->
+  <!-- VANILLA JAVASCRIPT APPLICATION CORE -->
+  <!-- ========================================================================= -->
+  <script>
+    /**
+     * Application State Store
+     */
+    const APP = {
+      user: {
+        nama: '',
+        sekolah: '',
+        paket: 'paket1',
+        mataUji: 'bahasaIndonesia'
+      },
+      paketLabels: {
+        paket1: 'Paket 1: Dasar',
+        paket2: 'Paket 2: Lanjut',
+        paket3: 'Paket 3: Pemantapan'
+      },
+      subjectLabels: {
+        bahasaIndonesia: 'Bahasa Indonesia',
+        matematika: 'Matematika'
+      },
+      soalList: [],         // 15 Soal array loaded from JSON
+      currentIndex: 0,      // Current question index (0 - 14)
+      answers: {},          // Store user answers keyed by soal.id
+      ragu: {},             // Flag ragu-ragu keyed by soal.id
+      timerRemaining: 45 * 60, // 45 minutes in seconds
+      timerInterval: null,
+      examFinished: false,
+      examResult: null
+    };
+
+    /**
+     * Helper: Menentukan materi/topik pokok soal berdasarkan mata uji
+     */
+    function getMateriSoal(soal, subject) {
+      if (subject === 'matematika') {
+        if (soal.elemen) return soal.elemen;
+        if (soal.id <= 3) return 'Bilangan';
+        if (soal.id <= 7) return 'Aljabar';
+        if (soal.id <= 12) return 'Geometri dan Pengukuran';
+        return 'Data dan Peluang';
+      } else {
+        if (soal.id <= 3) return 'Teks Informasi & Faktual';
+        if (soal.id <= 6) return 'Teks Fiksi & Sastra (Cerpen)';
+        if (soal.id <= 9) return 'Analisis Perbandingan Teks';
+        if (soal.id <= 12) return 'Apresiasi & Gaya Bahasa Puisi';
+        return 'Teks Eksplanasi & Informasi Digital';
+      }
+    }
+
+    /**
+     * Helper: Menghasilkan deskripsi kompetensi & rekomendasi perbaikan per materi
+     */
+    function getRekomendasiMateri(materiName, isMastered) {
+      const db = {
+        'Bilangan': {
+          mastered: 'Siswa telah menguasai operasi bilangan berpangkat, akar, pecahan, serta perhitungan skala jarak secara akurat.',
+          remedial: 'Pelajari kembali operasi eksponen negatif, konversi pecahan-desimal-persen, dan latihan soal perbandingan skala.'
+        },
+        'Aljabar': {
+          mastered: 'Siswa memahami pola barisan bilangan aritmetika/geometri, pemodelan variabel, dan substitusi aljabar dengan baik.',
+          remedial: 'Perkuat pemahaman rumus suku ke-n dan jumlah suku ($U_n$ & $S_n$) barisan aritmetika serta penyelesaian persamaan linear.'
+        },
+        'Geometri dan Pengukuran': {
+          mastered: 'Mampu menganalisis hubungan sudut, penerapan teorema Pythagoras, serta perhitungan luas dan volume bangun geometri.',
+          remedial: 'Cermati kembali hubungan sudut berpelurus/sehadap, rumus luas lingkaran/tabung, dan latihan menghitung volume bangun ruang.'
+        },
+        'Data dan Peluang': {
+          mastered: 'Siswa mampu membaca data tabel/diagram statistik, menghitung nilai rata-rata (mean), dan memprediksi peluang kejadian.',
+          remedial: 'Tingkatkan latihan membaca tabel distribusi frekuensi, menghitung rata-rata gabungan, serta penentuan ruang sampel peluang.'
+        },
+        'Teks Informasi & Faktual': {
+          mastered: 'Mampu mengidentifikasi gagasan utama, fakta tersurat, dan makna istilah ilmiah dalam teks sains/lingkungan secara tepat.',
+          remedial: 'Latih ketelitian membaca teks informatif untuk menyimpulkan detail penting dan membedakan fakta vs opini penulis.'
+        },
+        'Teks Fiksi & Sastra (Cerpen)': {
+          mastered: 'Mampu menganalisis perwatakan tokoh, konflik batin, latar suasana, dan pesan moral dalam karya fiksi cerita pendek.',
+          remedial: 'Perdalam pemahaman unsur intrinsik cerita seperti sudut pandang narator, perubahan karakter tokoh, dan amanat tersirat.'
+        },
+        'Analisis Perbandingan Teks': {
+          mastered: 'Mampu mensintesis informasi, membedakan gaya penyajian bahasa, dan mengevaluasi keselarasan argumen antar dua teks.',
+          remedial: 'Tingkatkan latihan membandingkan tujuan penulisan, perbedaan sudut pandang, dan verifikasi klaim antar teks jamak.'
+        },
+        'Apresiasi & Gaya Bahasa Puisi': {
+          mastered: 'Mampu menginterpretasikan majas (metafora, personifikasi), citraan rasa/visual, serta makna kata kias dalam puisi.',
+          remedial: 'Pelajari ragam majas, lambang kata kiasan, dan pesan emosional yang diungkapkan penyair dalam bait puisi.'
+        },
+        'Teks Eksplanasi & Informasi Digital': {
+          mastered: 'Memahami hubungan sebab-akibat sistemik, fungsi teknologi, serta kesadaran kritis keamanan data di ruang publik digital.',
+          remedial: 'Cermati kembali alur kerja sebab-akibat fenomena dan telaah langkah-langkah mitigasi resiko dalam teks digital.'
+        }
+      };
+
+      const fallback = {
+        mastered: 'Siswa menunjukkan penguasaan konsep yang matang pada materi ini.',
+        remedial: 'Disarankan untuk menelaah kembali konsep dasar dan menyelesaikan latihan soal tambahan pada materi ini.'
+      };
+
+      const entry = db[materiName] || fallback;
+      return isMastered ? entry.mastered : entry.remedial;
+    }
+
+    /**
+     * Helper: Render KaTeX in given container or document.body
+     */
+    function renderMath(targetElement) {
+      const el = targetElement || document.body;
+      const doRender = () => {
+        if (window.renderMathInElement) {
+          try {
+            window.renderMathInElement(el, {
+              delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+              ],
+              throwOnError: false
+            });
+          } catch (err) {
+            console.warn('KaTeX render warning:', err);
+          }
+        }
+      };
+
+      if (window.renderMathInElement) {
+        doRender();
+      } else {
+        setTimeout(doRender, 150);
+      }
+    }
+
+    /**
+     * 1. Dynamic Data Fetcher (Fetch JSON with Fallback support)
+     */
+    async function fetchPaketData(paketId) {
+      const jsonFile = `${paketId}.json`;
+      const jsVar = paketId;
+
+      try {
+        const response = await fetch(jsonFile);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: Gagal mengunduh berkas ${jsonFile}`);
+        }
+        const data = await response.json();
+        return data;
+      } catch (fetchErr) {
+        console.warn(`Fetch JSON "${jsonFile}" tidak berhasil, mencoba memuat dari script memory:`, fetchErr);
+        
+        if (window[jsVar] && typeof window[jsVar] === 'object') {
+          console.info(`Berhasil memuat data paket dari objek memori script ${jsVar}`);
+          return window[jsVar];
+        }
+
+        throw new Error(
+          `Gagal memuat ${jsonFile}: ${fetchErr.message}. ` +
+          `Jika Anda membuka file index.html langsung (file://), pastikan paket1.js tersedia atau gunakan server lokal seperti Live Server / npx serve.`
+        );
+      }
+    }
+
+    /**
+     * Helper: Compute stimulus and parent stimulus reference
+     */
+    function resolveStimulus(soal, allSoal) {
+      if (!soal.stimulus) return null;
+      const text = soal.stimulus.trim();
+      const isRef = text.startsWith('(Mengacu pada');
+
+      if (isRef) {
+        const parentId = Math.floor((soal.id - 1) / 3) * 3 + 1;
+        const parentSoal = allSoal.find(q => q.id === parentId);
+        return {
+          isReference: true,
+          referenceNote: text,
+          parentStimulus: parentSoal ? parentSoal.stimulus : '',
+          parentId: parentId
+        };
+      }
+
+      return {
+        isReference: false,
+        content: text,
+        parentId: soal.id
+      };
+    }
+
+    /**
+     * Helper: Check if question has been answered by user
+     */
+    function isQuestionAnswered(soal, userAns) {
+      if (userAns === undefined || userAns === null) return false;
+      
+      if (soal.tipe === 'PG') {
+        return typeof userAns === 'string' && userAns.trim() !== '';
+      }
+      if (soal.tipe === 'PGK_MCMA') {
+        return Array.isArray(userAns) && userAns.length > 0;
+      }
+      if (soal.tipe === 'PGK_KATEGORI') {
+        return Array.isArray(userAns) && userAns.length === 3 && userAns.every(v => Boolean(v));
+      }
+      return false;
+    }
+
+    /**
+     * Navigation Grid Status Render (Desktop & Mobile)
+     */
+    function updateNavGrid() {
+      const desktopGrid = document.getElementById('nav-numbers-grid');
+      const mobileGrid = document.getElementById('mobile-nav-numbers-grid');
+      if (!desktopGrid) return;
+
+      let answeredCount = 0;
+      let raguCount = 0;
+
+      const buttonsHtml = APP.soalList.map((soal, index) => {
+        const userAns = APP.answers[soal.id];
+        const answered = isQuestionAnswered(soal, userAns);
+        const isRagu = Boolean(APP.ragu[soal.id]);
+        const isActive = (APP.currentIndex === index);
+
+        if (answered) answeredCount++;
+        if (isRagu) raguCount++;
+
+        let colorClasses = 'bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-300';
+        if (isRagu) {
+          colorClasses = 'bg-amber-400 text-amber-950 font-bold border-amber-500 shadow-xs';
+        } else if (answered) {
+          colorClasses = 'bg-emerald-600 text-white font-bold border-emerald-600 shadow-xs hover:bg-emerald-700';
+        }
+
+        const activeRing = isActive ? 'ring-2 ring-brand-600 ring-offset-2 scale-105 z-10 border-brand-600' : '';
+
+        return `
+          <button type="button" onclick="goToQuestion(${index})"
+            class="h-10 rounded-xl flex items-center justify-center text-sm font-semibold border transition-all ${colorClasses} ${activeRing}">
+            ${index + 1}
+          </button>
+        `;
+      }).join('');
+
+      desktopGrid.innerHTML = buttonsHtml;
+      if (mobileGrid) mobileGrid.innerHTML = buttonsHtml;
+
+      const unansweredCount = APP.soalList.length - answeredCount;
+      document.getElementById('stat-count-answered').textContent = answeredCount;
+      document.getElementById('stat-count-ragu').textContent = raguCount;
+      document.getElementById('stat-count-unanswered').textContent = unansweredCount;
+    }
+
+    /**
+     * Render the active question view
+     */
+    function renderCurrentQuestion() {
+      const soal = APP.soalList[APP.currentIndex];
+      if (!soal) return;
+
+      document.getElementById('badge-soal-no').textContent = `Soal No. ${APP.currentIndex + 1} dari ${APP.soalList.length}`;
+      
+      const badgeTipe = document.getElementById('badge-soal-tipe');
+      if (soal.tipe === 'PG') {
+        badgeTipe.textContent = 'Pilihan Ganda (PG)';
+        badgeTipe.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200';
+      } else if (soal.tipe === 'PGK_MCMA') {
+        badgeTipe.textContent = 'PG Kompleks (Centang Lebih dari Satu)';
+        badgeTipe.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200';
+      } else if (soal.tipe === 'PGK_KATEGORI') {
+        badgeTipe.textContent = 'PG Kompleks (Kategori Tabel)';
+        badgeTipe.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
+      }
+
+      const badgeElemen = document.getElementById('badge-soal-elemen');
+      const materiName = getMateriSoal(soal, APP.user.mataUji);
+      if (materiName) {
+        badgeElemen.textContent = materiName;
+        badgeElemen.classList.remove('hidden');
+      } else {
+        badgeElemen.classList.add('hidden');
+      }
+
+      // Stimulus Handling
+      const paneStimulusWrapper = document.getElementById('pane-stimulus-wrapper');
+      const paneStimulusContent = document.getElementById('pane-stimulus-content');
+      const paneQuestionWrapper = document.getElementById('pane-question-wrapper');
+      const stimulusInfo = resolveStimulus(soal, APP.soalList);
+
+      if (stimulusInfo && (stimulusInfo.content || stimulusInfo.parentStimulus)) {
+        paneStimulusWrapper.classList.remove('hidden');
+        paneQuestionWrapper.className = 'lg:col-span-6 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between min-h-[500px]';
+
+        const groupStart = Math.floor((soal.id - 1) / 3) * 3 + 1;
+        const groupEnd = groupStart + 2;
+        document.getElementById('stimulus-group-badge').textContent = `Grup Soal ${groupStart} s.d. ${groupEnd}`;
+
+        if (stimulusInfo.isReference) {
+          paneStimulusContent.innerHTML = `
+            <div class="mb-3 px-3.5 py-2.5 bg-brand-50 border border-brand-200 rounded-xl text-xs font-semibold text-brand-900 flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-brand-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>${stimulusInfo.referenceNote}</span>
+            </div>
+            <div class="text-slate-800 leading-relaxed font-serif text-[15px] space-y-3">
+              ${stimulusInfo.parentStimulus}
+            </div>
+          `;
+        } else {
+          paneStimulusContent.innerHTML = `
+            <div class="text-slate-800 leading-relaxed font-serif text-[15px] space-y-3">
+              ${stimulusInfo.content}
+            </div>
+          `;
+        }
+      } else {
+        paneStimulusWrapper.classList.add('hidden');
+        paneQuestionWrapper.className = 'lg:col-span-12 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col justify-between min-h-[450px]';
+      }
+
+      document.getElementById('box-pertanyaan').innerHTML = soal.pertanyaan;
+      renderAnswerControls(soal);
+
+      const isRagu = Boolean(APP.ragu[soal.id]);
+      document.getElementById('check-ragu-ragu').checked = isRagu;
+
+      document.getElementById('btn-prev-soal').disabled = (APP.currentIndex === 0);
+      const btnNext = document.getElementById('btn-next-soal');
+      if (APP.currentIndex === APP.soalList.length - 1) {
+        btnNext.innerHTML = `
+          <span>Kumpulkan</span>
+          <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        `;
+        btnNext.className = 'px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md shadow-emerald-600/20 transition flex items-center gap-1.5';
+      } else {
+        btnNext.innerHTML = `
+          <span>Selanjutnya</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        `;
+        btnNext.className = 'px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md shadow-brand-500/20 transition flex items-center gap-1.5';
+      }
+
+      renderMath(document.getElementById('view-exam'));
+      updateNavGrid();
+    }
+
+    /**
+     * Render the Answer Controls based on Question Type (PG, PGK_MCMA, PGK_KATEGORI)
+     */
+    function renderAnswerControls(soal) {
+      const container = document.getElementById('box-jawaban-controls');
+      const userAns = APP.answers[soal.id];
+      const letters = ['A', 'B', 'C', 'D'];
+
+      // TYPE 1: PG
+      if (soal.tipe === 'PG') {
+        let html = '<div class="space-y-3">';
+        soal.opsi.forEach((optText, idx) => {
+          const letter = letters[idx];
+          const isSelected = (userAns === letter);
+          const checkedAttr = isSelected ? 'checked' : '';
+          const cleanText = optText.replace(/^[A-D]\.\s*/, '');
+
+          html += `
+            <label class="group relative flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition select-none
+              ${isSelected ? 'border-brand-600 bg-brand-50/40 text-brand-950 font-medium' : 'border-slate-200 bg-white hover:border-slate-300 text-slate-800'}">
+              <input type="radio" name="opt_pg_${soal.id}" value="${letter}" ${checkedAttr}
+                onchange="handleSelectPG('${soal.id}', '${letter}')"
+                class="sr-only">
+              <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors
+                ${isSelected ? 'bg-brand-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 group-hover:bg-slate-200'}">
+                ${letter}
+              </span>
+              <span class="text-sm sm:text-base leading-snug flex-1 pt-0.5">${cleanText}</span>
+            </label>
+          `;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+      }
+
+      // TYPE 2: PGK_MCMA
+      else if (soal.tipe === 'PGK_MCMA') {
+        const selectedIndices = Array.isArray(userAns) ? userAns : [];
+        let html = `
+          <div class="mb-2 p-2.5 rounded-lg bg-purple-50 border border-purple-200 text-purple-900 text-xs font-semibold flex items-center gap-2">
+            <svg class="w-4 h-4 text-purple-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Pilihlah satu atau lebih dari satu jawaban yang benar (Centang kotak).</span>
+          </div>
+          <div class="space-y-3">
+        `;
+
+        soal.opsi.forEach((optText, idx) => {
+          const isSelected = selectedIndices.includes(idx);
+          const checkedAttr = isSelected ? 'checked' : '';
+          const cleanText = optText.replace(/^[A-D]\.\s*/, '');
+
+          html += `
+            <label class="group relative flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition select-none
+              ${isSelected ? 'border-purple-600 bg-purple-50/40 text-purple-950 font-medium' : 'border-slate-200 bg-white hover:border-slate-300 text-slate-800'}">
+              <input type="checkbox" value="${idx}" ${checkedAttr}
+                onchange="handleToggleMCMA('${soal.id}', ${idx})"
+                class="sr-only">
+              <div class="w-6 h-6 rounded-md flex items-center justify-center font-bold text-xs shrink-0 border transition-all mt-0.5
+                ${isSelected ? 'bg-purple-600 border-purple-600 text-white shadow-xs' : 'bg-slate-50 border-slate-300 group-hover:border-slate-400'}">
+                ${isSelected ? `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>` : ''}
+              </div>
+              <span class="text-sm sm:text-base leading-snug flex-1">${cleanText}</span>
+            </label>
+          `;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+      }
+
+      // TYPE 3: PGK_KATEGORI
+      else if (soal.tipe === 'PGK_KATEGORI') {
+        const userCatAnswers = Array.isArray(userAns) ? userAns : [null, null, null];
+        const katA = soal.kategori[0];
+        const katB = soal.kategori[1];
+
+        let html = `
+          <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-xs">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead class="bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider">
+                <tr>
+                  <th scope="col" class="py-3 px-4 w-3/5">Pernyataan</th>
+                  <th scope="col" class="py-3 px-3 text-center w-1/5">${katA}</th>
+                  <th scope="col" class="py-3 px-3 text-center w-1/5">${katB}</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white">
+        `;
+
+        soal.pernyataan.forEach((stmt, rowIdx) => {
+          const currentVal = userCatAnswers[rowIdx];
+          const isA = (currentVal === katA);
+          const isB = (currentVal === katB);
+
+          html += `
+            <tr class="hover:bg-slate-50/70 transition">
+              <td class="py-3.5 px-4 font-normal text-slate-800 leading-snug">
+                ${stmt}
+              </td>
+              <td class="py-3.5 px-3 text-center">
+                <label class="inline-flex items-center justify-center p-2 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="radio" name="kat_row_${soal.id}_${rowIdx}" value="${katA}" ${isA ? 'checked' : ''}
+                    onchange="handleSelectKategori('${soal.id}', ${rowIdx}, '${katA}')"
+                    class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 border-slate-300">
+                </label>
+              </td>
+              <td class="py-3.5 px-3 text-center">
+                <label class="inline-flex items-center justify-center p-2 rounded-lg cursor-pointer hover:bg-slate-100">
+                  <input type="radio" name="kat_row_${soal.id}_${rowIdx}" value="${katB}" ${isB ? 'checked' : ''}
+                    onchange="handleSelectKategori('${soal.id}', ${rowIdx}, '${katB}')"
+                    class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 border-slate-300">
+                </label>
+              </td>
+            </tr>
+          `;
+        });
+
+        html += `
+              </tbody>
+            </table>
+          </div>
+        `;
+        container.innerHTML = html;
+      }
+    }
+
+    /**
+     * Handlers for user interactions
+     */
+    function handleSelectPG(soalId, letter) {
+      APP.answers[soalId] = letter;
+      renderCurrentQuestion();
+    }
+
+    function handleToggleMCMA(soalId, optionIdx) {
+      let current = APP.answers[soalId];
+      if (!Array.isArray(current)) current = [];
+      
+      if (current.includes(optionIdx)) {
+        current = current.filter(i => i !== optionIdx);
+      } else {
+        current.push(optionIdx);
+        current.sort((a, b) => a - b);
+      }
+      APP.answers[soalId] = current;
+      renderCurrentQuestion();
+    }
+
+    function handleSelectKategori(soalId, rowIdx, categoryVal) {
+      let current = APP.answers[soalId];
+      if (!Array.isArray(current) || current.length !== 3) {
+        current = [null, null, null];
+      }
+      current[rowIdx] = categoryVal;
+      APP.answers[soalId] = current;
+      renderCurrentQuestion();
+    }
+
+    function toggleRagu() {
+      const soal = APP.soalList[APP.currentIndex];
+      if (!soal) return;
+      APP.ragu[soal.id] = !APP.ragu[soal.id];
+      renderCurrentQuestion();
+    }
+
+    function goToQuestion(index) {
+      if (index >= 0 && index < APP.soalList.length) {
+        APP.currentIndex = index;
+        renderCurrentQuestion();
+        document.getElementById('pane-question-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    /**
+     * Exam Timer Management
+     */
+    function startTimer() {
+      const timerWrapper = document.getElementById('exam-timer-wrapper');
+      const timerBadge = document.getElementById('exam-timer-badge');
+      const timerText = document.getElementById('exam-timer-text');
+      timerWrapper.classList.remove('hidden');
+
+      const updateClock = () => {
+        const m = Math.floor(APP.timerRemaining / 60);
+        const s = APP.timerRemaining % 60;
+        timerText.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+        if (APP.timerRemaining <= 300) {
+          timerBadge.className = 'flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full font-mono text-sm sm:text-base font-bold bg-rose-50 text-rose-700 border border-rose-200 animate-pulse';
+        } else {
+          timerBadge.className = 'flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full font-mono text-sm sm:text-base font-bold bg-slate-100 text-slate-700 border border-slate-200';
+        }
+
+        if (APP.timerRemaining <= 0) {
+          clearInterval(APP.timerInterval);
+          onTimeUp();
+        } else {
+          APP.timerRemaining--;
+        }
+      };
+
+      updateClock();
+      APP.timerInterval = setInterval(updateClock, 1000);
+    }
+
+    function stopTimer() {
+      if (APP.timerInterval) {
+        clearInterval(APP.timerInterval);
+        APP.timerInterval = null;
+      }
+      document.getElementById('exam-timer-wrapper').classList.add('hidden');
+    }
+
+    function onTimeUp() {
+      const modal = document.getElementById('modal-time-up');
+      if (modal && typeof modal.showModal === 'function') {
+        modal.showModal();
+      } else {
+        alert('Waktu ujian telah habis! Lembar jawaban Anda otomatis dikumpulkan.');
+        calculateAndShowResults();
+      }
+    }
+
+    function promptSubmitConfirmation() {
+      let answeredCount = 0;
+      let raguCount = 0;
+      APP.soalList.forEach(soal => {
+        if (isQuestionAnswered(soal, APP.answers[soal.id])) answeredCount++;
+        if (APP.ragu[soal.id]) raguCount++;
+      });
+      const unansweredCount = APP.soalList.length - answeredCount;
+
+      document.getElementById('modal-confirm-answered').textContent = `${answeredCount} Soal`;
+      document.getElementById('modal-confirm-ragu').textContent = `${raguCount} Soal`;
+      document.getElementById('modal-confirm-unanswered').textContent = `${unansweredCount} Soal`;
+
+      const warningEl = document.getElementById('modal-confirm-warning');
+      if (unansweredCount > 0 || raguCount > 0) {
+        warningEl.classList.remove('hidden');
+      } else {
+        warningEl.classList.add('hidden');
+      }
+
+      const modal = document.getElementById('modal-confirm-submit');
+      if (modal && typeof modal.showModal === 'function') {
+        modal.showModal();
+      } else {
+        if (confirm('Apakah Anda yakin ingin menyelesaikan ujian sekarang?')) {
+          calculateAndShowResults();
+        }
+      }
+    }
+
+    /**
+     * Helper: Menghitung Predikat berdasarkan Nilai Akhir
+     */
+    function getPredikat(score) {
+      if (score >= 85) return { grade: 'A', label: 'Sangat Baik (Mahir)', desc: 'Kompetensi Sangat Memuaskan' };
+      if (score >= 70) return { grade: 'B', label: 'Baik (Cakap)', desc: 'Kompetensi Memuaskan' };
+      if (score >= 55) return { grade: 'C', label: 'Cukup (Layak)', desc: 'Perlu Latihan Tambahan' };
+      return { grade: 'D', label: 'Perlu Bimbingan', desc: 'Perlu Pendampingan Khusus' };
+    }
+
+    /**
+     * Calculation of Results, Scoring & Diagnostic Evaluation
+     */
+    function calculateAndShowResults() {
+      stopTimer();
+      APP.examFinished = true;
+
+      // Close modals
+      const confirmModal = document.getElementById('modal-confirm-submit');
+      if (confirmModal && confirmModal.open) confirmModal.close();
+      const timeUpModal = document.getElementById('modal-time-up');
+      if (timeUpModal && timeUpModal.open) timeUpModal.close();
+      const mobileNavModal = document.getElementById('modal-mobile-nav');
+      if (mobileNavModal && mobileNavModal.open) mobileNavModal.close();
+
+      let correctCount = 0;
+      const details = APP.soalList.map((soal) => {
+        const userAns = APP.answers[soal.id];
+        let isCorrect = false;
+
+        if (soal.tipe === 'PG') {
+          isCorrect = (typeof userAns === 'string' && userAns.trim() === soal.kunci.trim());
+        } else if (soal.tipe === 'PGK_MCMA') {
+          if (Array.isArray(userAns) && Array.isArray(soal.kunci)) {
+            const sortedU = [...userAns].sort((a, b) => a - b);
+            const sortedK = [...soal.kunci].sort((a, b) => a - b);
+            isCorrect = (sortedU.length === sortedK.length && sortedU.every((v, i) => v === sortedK[i]));
+          }
+        } else if (soal.tipe === 'PGK_KATEGORI') {
+          if (Array.isArray(userAns) && Array.isArray(soal.kunci) && userAns.length === soal.kunci.length) {
+            isCorrect = userAns.every((v, i) => v === soal.kunci[i]);
+          }
+        }
+
+        if (isCorrect) correctCount++;
+        const materi = getMateriSoal(soal, APP.user.mataUji);
+        return { soal, userAns, isCorrect, materi };
+      });
+
+      const incorrectCount = APP.soalList.length - correctCount;
+      const finalScore = Number(((correctCount / APP.soalList.length) * 100).toFixed(1));
+      const predikat = getPredikat(finalScore);
+
+      // Diagnostic grouping per materi
+      const materiStats = {};
+      details.forEach(item => {
+        const m = item.materi;
+        if (!materiStats[m]) {
+          materiStats[m] = {
+            name: m,
+            total: 0,
+            correct: 0,
+            wrong: 0,
+            questionIds: [],
+            correctIds: [],
+            wrongIds: []
+          };
+        }
+        materiStats[m].total++;
+        materiStats[m].questionIds.push(item.soal.id);
+        if (item.isCorrect) {
+          materiStats[m].correct++;
+          materiStats[m].correctIds.push(item.soal.id);
+        } else {
+          materiStats[m].wrong++;
+          materiStats[m].wrongIds.push(item.soal.id);
+        }
+      });
+
+      // Calculate percentage and status
+      Object.keys(materiStats).forEach(m => {
+        const st = materiStats[m];
+        st.pct = Math.round((st.correct / st.total) * 100);
+        st.isMastered = (st.pct >= 70);
+      });
+
+      APP.examResult = {
+        totalSoal: APP.soalList.length,
+        correctCount,
+        incorrectCount,
+        finalScore,
+        predikat,
+        details,
+        materiStats
+      };
+
+      // Switch view to Results
+      document.getElementById('view-lobby').classList.add('hidden');
+      document.getElementById('view-exam').classList.add('hidden');
+      document.getElementById('view-result').classList.remove('hidden');
+
+      document.getElementById('btn-top-finish').classList.add('hidden');
+      document.getElementById('btn-toggle-drawer').classList.add('hidden');
+
+      // Populate Report Card (Laporan PDF & Layar)
+      populateDiagnosticReport();
+
+      // Populate Solutions Review Tab
+      renderSolutionsReview('all');
+
+      // Activate default tab: Laporan
+      switchResultTab('laporan');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * Mengisi Data Lengkap ke Lembar Laporan Hasil Ujian & Diagnosis Materi
+     */
+    function populateDiagnosticReport() {
+      const res = APP.examResult;
+      if (!res) return;
+
+      const now = new Date();
+      const dateFormatted = now.toLocaleDateString('id-ID', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }) + ' WIB';
+
+      // Identitas
+      document.getElementById('pdf-student-name').textContent = APP.user.nama;
+      document.getElementById('pdf-student-school').textContent = APP.user.sekolah;
+      document.getElementById('pdf-exam-paket').textContent = APP.paketLabels[APP.user.paket];
+      document.getElementById('pdf-exam-subject').textContent = APP.subjectLabels[APP.user.mataUji];
+      document.getElementById('pdf-exam-timestamp').textContent = dateFormatted;
+      document.getElementById('pdf-print-date').textContent = dateFormatted;
+      document.getElementById('pdf-sign-student').textContent = APP.user.nama;
+      document.getElementById('res-top-summary-text').textContent = 
+        `${APP.user.nama} • ${APP.paketLabels[APP.user.paket]} • ${APP.subjectLabels[APP.user.mataUji]}`;
+
+      // Skor & Akurasi
+      document.getElementById('pdf-score-value').textContent = res.finalScore;
+      document.getElementById('pdf-count-correct').textContent = res.correctCount;
+      document.getElementById('pdf-count-incorrect').textContent = res.incorrectCount;
+      document.getElementById('pdf-percent-correct').textContent = `${Math.round((res.correctCount / res.totalSoal) * 100)}% Akurat`;
+      document.getElementById('pdf-predikat-grade').textContent = res.predikat.grade;
+      document.getElementById('pdf-predikat-desc').textContent = res.predikat.label;
+
+      document.getElementById('filter-count-correct').textContent = res.correctCount;
+      document.getElementById('filter-count-incorrect').textContent = res.incorrectCount;
+
+      // Tabel Diagnosis Materi
+      const tableBody = document.getElementById('pdf-materi-table-body');
+      let tableHtml = '';
+      const masteredList = [];
+      const needsWorkList = [];
+
+      Object.values(res.materiStats).forEach((item) => {
+        const isMastered = item.isMastered;
+        const statusBadge = isMastered
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800">✓ Sudah Dikuasai</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800">⚠️ Perlu Perbaikan</span>`;
+
+        tableHtml += `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-2.5 px-3 font-semibold text-slate-800">${item.name}</td>
+            <td class="py-2.5 px-2 text-center font-mono text-slate-600">${item.questionIds.join(', ')}</td>
+            <td class="py-2.5 px-2 text-center text-slate-600 font-semibold">${item.total}</td>
+            <td class="py-2.5 px-2 text-center font-bold text-emerald-600">${item.correct}</td>
+            <td class="py-2.5 px-2 text-center font-bold text-rose-600">${item.wrong}</td>
+            <td class="py-2.5 px-2 text-center font-bold ${isMastered ? 'text-emerald-700' : 'text-amber-700'}">${item.pct}%</td>
+            <td class="py-2.5 px-3 text-center">${statusBadge}</td>
+          </tr>
+        `;
+
+        if (isMastered) {
+          masteredList.push(item);
+        } else {
+          needsWorkList.push(item);
+        }
+      });
+      tableBody.innerHTML = tableHtml;
+
+      // Render Panel: Materi yang Sudah Dikuasai
+      const masteredUl = document.getElementById('pdf-list-materi-mastered');
+      if (masteredList.length > 0) {
+        masteredUl.innerHTML = masteredList.map(item => `
+          <li class="p-3 rounded-xl bg-white border border-emerald-200/80 shadow-xs">
+            <div class="flex items-center justify-between font-bold text-slate-900 mb-1">
+              <span>${item.name}</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">${item.pct}% Tuntas</span>
+            </div>
+            <p class="text-slate-600 leading-snug">${getRekomendasiMateri(item.name, true)}</p>
+            <div class="mt-2 text-[11px] text-emerald-700 font-semibold">
+              Nomor Terjawab Benar: No. ${item.correctIds.join(', ')}
+            </div>
+          </li>
+        `).join('');
+      } else {
+        masteredUl.innerHTML = `
+          <li class="p-3 text-slate-500 italic bg-white rounded-xl border border-slate-200 text-center">
+            Belum ada materi dengan ketuntasan $\ge 70\%$. Jangan berkecil hati, mari pelajari kembali pembahasannya!
+          </li>
+        `;
+      }
+
+      // Render Panel: Materi yang Perlu Diperbaiki
+      const needsWorkUl = document.getElementById('pdf-list-materi-needs-work');
+      if (needsWorkList.length > 0) {
+        needsWorkUl.innerHTML = needsWorkList.map(item => `
+          <li class="p-3 rounded-xl bg-white border border-amber-200/80 shadow-xs">
+            <div class="flex items-center justify-between font-bold text-slate-900 mb-1">
+              <span>${item.name}</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-800">${item.pct}%</span>
+            </div>
+            <p class="text-slate-600 leading-snug">${getRekomendasiMateri(item.name, false)}</p>
+            <div class="mt-2 text-[11px] text-amber-800 font-semibold flex items-center justify-between">
+              <span>Fokus Perbaikan: <strong>No. ${item.wrongIds.join(', ')}</strong></span>
+              <span class="text-rose-600">(${item.wrong} salah dari ${item.total} soal)</span>
+            </div>
+          </li>
+        `).join('');
+      } else {
+        needsWorkUl.innerHTML = `
+          <li class="p-3 text-emerald-800 bg-white rounded-xl border border-emerald-200 text-center font-bold">
+            🌟 Luar biasa! Seluruh materi telah dikuasai dengan tuntas ($\ge 70\%$). Pertahankan prestasimu!
+          </li>
+        `;
+      }
+
+      // Matriks Butir Soal 1-15
+      const matrixBody = document.getElementById('pdf-matrix-table-body');
+      const letters = ['A', 'B', 'C', 'D'];
+      let matrixHtml = '';
+
+      res.details.forEach((item) => {
+        const { soal, userAns, isCorrect, materi } = item;
+        let formattedUser = '-';
+        let formattedKey = '-';
+
+        if (soal.tipe === 'PG') {
+          formattedUser = userAns ? `<b>${userAns}</b>` : '<span class="text-slate-400 italic">Kosong</span>';
+          formattedKey = `<b>${soal.kunci}</b>`;
+        } else if (soal.tipe === 'PGK_MCMA') {
+          if (Array.isArray(userAns) && userAns.length > 0) {
+            formattedUser = userAns.map(i => letters[i] || (i + 1)).join(', ');
+          } else {
+            formattedUser = '<span class="text-slate-400 italic">Kosong</span>';
+          }
+          formattedKey = soal.kunci.map(i => letters[i] || (i + 1)).join(', ');
+        } else if (soal.tipe === 'PGK_KATEGORI') {
+          formattedUser = Array.isArray(userAns) ? userAns.map(v => v || '?').join(' | ') : '<span class="text-slate-400 italic">Kosong</span>';
+          formattedKey = soal.kunci.join(' | ');
+        }
+
+        const resBadge = isCorrect
+          ? `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold">✓</span>`
+          : `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-rose-100 text-rose-700 font-bold">✗</span>`;
+
+        matrixHtml += `
+          <tr class="${isCorrect ? 'bg-white' : 'bg-rose-50/20'}">
+            <td class="py-2 px-2.5 text-center font-bold text-slate-800">${soal.id}</td>
+            <td class="py-2 px-3 text-slate-700 font-medium">${materi}</td>
+            <td class="py-2 px-2 text-center text-slate-500 font-mono text-[11px]">${soal.tipe}</td>
+            <td class="py-2 px-3 ${isCorrect ? 'text-emerald-800' : 'text-rose-800'}">${formattedUser}</td>
+            <td class="py-2 px-3 text-slate-900 font-semibold">${formattedKey}</td>
+            <td class="py-2 px-2.5 text-center">${resBadge}</td>
+          </tr>
+        `;
+      });
+      matrixBody.innerHTML = matrixHtml;
+
+      renderMath(document.getElementById('laporan-pdf-card'));
+    }
+
+    /**
+     * Download Laporan Resmi Hasil Tryout ke format PDF menggunakan html2pdf.js
+     */
+    async function downloadLaporanPDF() {
+      const btn = document.getElementById('btn-download-pdf');
+      const btnText = document.getElementById('text-download-pdf');
+      const btnIcon = document.getElementById('icon-download-pdf');
+      const originalText = btnText.textContent;
+
+      btn.disabled = true;
+      btnText.textContent = 'Menyiapkan PDF...';
+      btnIcon.classList.add('animate-spin');
+
+      try {
+        const reportElement = document.getElementById('laporan-pdf-card');
+        const cleanName = (APP.user.nama || 'Siswa').replace(/[^a-zA-Z0-9]/g, '_');
+        const fileName = `Laporan_TKA_${cleanName}_${APP.user.paket}_${APP.user.mataUji}.pdf`;
+
+        switchResultTab('laporan');
+
+        if (window.html2pdf) {
+          const opt = {
+            margin:       [8, 8, 8, 8],
+            filename:     fileName,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, logging: false },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+          };
+          await window.html2pdf().set(opt).from(reportElement).save();
+        } else {
+          window.print();
+        }
+      } catch (err) {
+        console.error('PDF generation error:', err);
+        alert('Terjadi kendala saat mengunduh PDF secara langsung. Membuka dialog cetak browser sebagai alternatif...');
+        window.print();
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = originalText;
+        btnIcon.classList.remove('animate-spin');
+      }
+    }
+
+    /**
+     * Switch Tabs in Result View (Laporan vs Pembahasan)
+     */
+    function switchResultTab(tabName) {
+      const tabBtnLaporan = document.getElementById('tab-btn-laporan');
+      const tabBtnPembahasan = document.getElementById('tab-btn-pembahasan');
+      const tabContentLaporan = document.getElementById('tab-content-laporan');
+      const tabContentPembahasan = document.getElementById('tab-content-pembahasan');
+
+      if (tabName === 'laporan') {
+        tabBtnLaporan.className = 'tab-nav-btn py-3 px-5 text-sm font-bold border-b-2 border-brand-600 text-brand-600 transition flex items-center gap-2';
+        tabBtnPembahasan.className = 'tab-nav-btn py-3 px-5 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center gap-2';
+        tabContentLaporan.classList.remove('hidden');
+        tabContentPembahasan.classList.add('hidden');
+        renderMath(tabContentLaporan);
+      } else {
+        tabBtnPembahasan.className = 'tab-nav-btn py-3 px-5 text-sm font-bold border-b-2 border-brand-600 text-brand-600 transition flex items-center gap-2';
+        tabBtnLaporan.className = 'tab-nav-btn py-3 px-5 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center gap-2';
+        tabContentLaporan.classList.add('hidden');
+        tabContentPembahasan.classList.remove('hidden');
+        renderMath(tabContentPembahasan);
+      }
+    }
+
+    /**
+     * Render the detailed solutions review list
+     */
+    function renderSolutionsReview(filter = 'all') {
+      const container = document.getElementById('review-solutions-list');
+      if (!container || !APP.examResult) return;
+
+      const letters = ['A', 'B', 'C', 'D'];
+      const filteredDetails = APP.examResult.details.filter(item => {
+        if (filter === 'correct') return item.isCorrect;
+        if (filter === 'incorrect') return !item.isCorrect;
+        return true;
+      });
+
+      if (filteredDetails.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-white rounded-2xl border border-slate-200 text-slate-500">
+            Tidak ada soal yang sesuai dengan filter ini.
+          </div>
+        `;
+        return;
+      }
+
+      const html = filteredDetails.map((item) => {
+        const { soal, userAns, isCorrect, materi } = item;
+        const stimulusInfo = resolveStimulus(soal, APP.soalList);
+
+        const statusBadge = isCorrect
+          ? `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              BENAR (+1 Poin)
+            </span>`
+          : `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200">
+              <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+              SALAH (0 Poin)
+            </span>`;
+
+        let answerComparisonHtml = '';
+
+        // TYPE 1: PG
+        if (soal.tipe === 'PG') {
+          answerComparisonHtml = '<div class="space-y-2 mt-4">';
+          soal.opsi.forEach((optText, optIdx) => {
+            const letter = letters[optIdx];
+            const isKey = (letter === soal.kunci);
+            const isUserPick = (letter === userAns);
+            const cleanText = optText.replace(/^[A-D]\.\s*/, '');
+
+            let cardStyle = 'border-slate-200 bg-white text-slate-700';
+            let badge = '';
+
+            if (isKey) {
+              cardStyle = 'border-emerald-500 bg-emerald-50/50 text-emerald-950 font-semibold';
+              badge = '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-600 text-white shrink-0">Kunci Benar</span>';
+            }
+            if (isUserPick && !isKey) {
+              cardStyle = 'border-rose-400 bg-rose-50/50 text-rose-950';
+              badge = '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-600 text-white shrink-0">Pilihan Anda</span>';
+            } else if (isUserPick && isKey) {
+              badge = '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-600 text-white shrink-0">Pilihan Tepat</span>';
+            }
+
+            answerComparisonHtml += `
+              <div class="flex items-start justify-between gap-3 p-3 rounded-xl border ${cardStyle}">
+                <div class="flex items-start gap-2.5">
+                  <span class="w-6 h-6 rounded-md font-bold text-xs flex items-center justify-center shrink-0 ${isKey ? 'bg-emerald-600 text-white' : (isUserPick ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-600')}">
+                    ${letter}
+                  </span>
+                  <span class="text-sm leading-snug pt-0.5">${cleanText}</span>
+                </div>
+                ${badge}
+              </div>
+            `;
+          });
+          answerComparisonHtml += '</div>';
+        }
+
+        // TYPE 2: PGK_MCMA
+        else if (soal.tipe === 'PGK_MCMA') {
+          const userArr = Array.isArray(userAns) ? userAns : [];
+          answerComparisonHtml = '<div class="space-y-2 mt-4">';
+          soal.opsi.forEach((optText, optIdx) => {
+            const isKey = soal.kunci.includes(optIdx);
+            const isChecked = userArr.includes(optIdx);
+            const cleanText = optText.replace(/^[A-D]\.\s*/, '');
+
+            let cardStyle = 'border-slate-200 bg-white text-slate-700';
+            let badge = '';
+
+            if (isKey && isChecked) {
+              cardStyle = 'border-emerald-500 bg-emerald-50/50 text-emerald-950 font-semibold';
+              badge = '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-600 text-white shrink-0">Pilihan Anda (Tepat)</span>';
+            } else if (isKey && !isChecked) {
+              cardStyle = 'border-amber-400 bg-amber-50/50 text-amber-950';
+              badge = '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500 text-white shrink-0">Kunci Benar (Tidak Dipilih)</span>';
+            } else if (!isKey && isChecked) {
+              cardStyle = 'border-rose-400 bg-rose-50/50 text-rose-950';
+              badge = '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-600 text-white shrink-0">Pilihan Salah</span>';
+            }
+
+            answerComparisonHtml += `
+              <div class="flex items-start justify-between gap-3 p-3 rounded-xl border ${cardStyle}">
+                <div class="flex items-start gap-2.5">
+                  <div class="w-5 h-5 rounded flex items-center justify-center shrink-0 border text-xs mt-0.5 ${isChecked ? 'bg-brand-600 border-brand-600 text-white' : 'border-slate-300'}">
+                    ${isChecked ? '✓' : ''}
+                  </div>
+                  <span class="text-sm leading-snug">${cleanText}</span>
+                </div>
+                ${badge}
+              </div>
+            `;
+          });
+          answerComparisonHtml += '</div>';
+        }
+
+        // TYPE 3: PGK_KATEGORI
+        else if (soal.tipe === 'PGK_KATEGORI') {
+          const userArr = Array.isArray(userAns) ? userAns : [null, null, null];
+          answerComparisonHtml = `
+            <div class="overflow-x-auto rounded-xl border border-slate-200 mt-4 text-xs">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-100 text-slate-700 font-bold uppercase">
+                  <tr>
+                    <th scope="col" class="p-3 w-1/2">Pernyataan</th>
+                    <th scope="col" class="p-3 text-center w-1/4">Jawaban Anda</th>
+                    <th scope="col" class="p-3 text-center w-1/4">Kunci Benar</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white">
+          `;
+
+          soal.pernyataan.forEach((stmt, rIdx) => {
+            const studentChoice = userArr[rIdx] || '<i class="text-slate-400">Kosong</i>';
+            const keyChoice = soal.kunci[rIdx];
+            const rowCorrect = (userArr[rIdx] === keyChoice);
+
+            answerComparisonHtml += `
+              <tr class="${rowCorrect ? 'bg-emerald-50/30' : 'bg-rose-50/30'}">
+                <td class="p-3 font-medium text-slate-800">${stmt}</td>
+                <td class="p-3 text-center font-bold ${rowCorrect ? 'text-emerald-700' : 'text-rose-700'}">${studentChoice}</td>
+                <td class="p-3 text-center font-bold text-slate-800">${keyChoice}</td>
+              </tr>
+            `;
+          });
+
+          answerComparisonHtml += `
+                </tbody>
+              </table>
+            </div>
+          `;
+        }
+
+        let stimulusSnippet = '';
+        if (stimulusInfo && (stimulusInfo.content || stimulusInfo.parentStimulus)) {
+          stimulusSnippet = `
+            <details class="mb-4 rounded-xl border border-slate-200 bg-slate-50/80 group">
+              <summary class="p-3 text-xs font-bold text-slate-700 cursor-pointer flex items-center justify-between select-none">
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                  Lihat Teks Stimulus Soal No. ${soal.id}
+                </span>
+                <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div class="p-4 pt-1 border-t border-slate-200 text-xs text-slate-700 font-serif leading-relaxed">
+                ${stimulusInfo.isReference ? `<p class="font-sans font-semibold text-brand-700 mb-2">${stimulusInfo.referenceNote}</p>` : ''}
+                ${stimulusInfo.isReference ? stimulusInfo.parentStimulus : stimulusInfo.content}
+              </div>
+            </details>
+          `;
+        }
+
+        return `
+          <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm print-break-inside-avoid">
+            <header class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs">
+                  Soal No. ${soal.id}
+                </span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+                  ${soal.tipe}
+                </span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                  ${materi}
+                </span>
+              </div>
+              <div>${statusBadge}</div>
+            </header>
+
+            <div class="mt-4">
+              ${stimulusSnippet}
+              <div class="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed">
+                ${soal.pertanyaan}
+              </div>
+              ${answerComparisonHtml}
+            </div>
+
+            <!-- Pembahasan Box -->
+            <div class="mt-5 p-4 rounded-xl bg-gradient-to-r from-blue-50/70 to-indigo-50/70 border border-blue-200/80">
+              <h5 class="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                Pembahasan Lengkap
+              </h5>
+              <div class="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                ${soal.pembahasan}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      container.innerHTML = html;
+      renderMath(container);
+    }
+
+    /**
+     * DOM EVENT LISTENERS & INITIALIZATION
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // FORM LOBBY SUBMIT
+      const formLobby = document.getElementById('form-lobby');
+      const errorAlert = document.getElementById('lobby-error-alert');
+      const errorMsg = document.getElementById('lobby-error-msg');
+      const btnStart = document.getElementById('btn-start-exam');
+      const btnStartText = document.getElementById('btn-start-text');
+      const btnStartSpinner = document.getElementById('btn-start-spinner');
+      const btnStartIcon = document.getElementById('btn-start-icon');
+
+      formLobby.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorAlert.classList.add('hidden');
+
+        const nama = document.getElementById('input-nama').value.trim();
+        const sekolah = document.getElementById('input-sekolah').value.trim();
+        const paket = document.querySelector('input[name="paket"]:checked')?.value || 'paket1';
+        const mataUji = document.querySelector('input[name="mataUji"]:checked')?.value || 'bahasaIndonesia';
+
+        if (!nama || !sekolah) {
+          errorMsg.textContent = 'Harap isi Nama Lengkap dan Asal Sekolah/Kelas sebelum memulai!';
+          errorAlert.classList.remove('hidden');
+          return;
+        }
+
+        btnStart.disabled = true;
+        btnStartText.textContent = 'Memuat Data Paket Soal...';
+        btnStartSpinner.classList.remove('hidden');
+        btnStartIcon.classList.add('hidden');
+
+        try {
+          const rawPaketData = await fetchPaketData(paket);
+
+          if (!rawPaketData || !Array.isArray(rawPaketData[mataUji])) {
+            throw new Error(`Data soal untuk mata uji "${mataUji}" tidak ditemukan di ${paket}.json.`);
+          }
+
+          APP.user = { nama, sekolah, paket, mataUji };
+          APP.soalList = rawPaketData[mataUji];
+          APP.currentIndex = 0;
+          APP.answers = {};
+          APP.ragu = {};
+          APP.timerRemaining = 45 * 60;
+          APP.examFinished = false;
+
+          document.getElementById('exam-user-name').textContent = nama;
+          document.getElementById('top-sub-info').textContent = 
+            `${APP.paketLabels[paket]} • ${APP.subjectLabels[mataUji]}`;
+          document.getElementById('btn-top-finish').classList.remove('hidden');
+          document.getElementById('btn-toggle-drawer').classList.remove('hidden');
+
+          document.getElementById('view-lobby').classList.add('hidden');
+          document.getElementById('view-exam').classList.remove('hidden');
+
+          renderCurrentQuestion();
+          startTimer();
+
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error(err);
+          errorMsg.innerHTML = `
+            <strong>Terjadi Kesalahan Saat Memuat Paket:</strong><br>
+            ${err.message}<br>
+            <span class="text-xs text-rose-700 mt-1 block">
+              Tip: Pastikan file <code>${paket}.json</code> berada dalam satu folder dengan <code>index.html</code>.
+            </span>
+          `;
+          errorAlert.classList.remove('hidden');
+        } finally {
+          btnStart.disabled = false;
+          btnStartText.textContent = 'Mulai Ujian Sekarang';
+          btnStartSpinner.classList.add('hidden');
+          btnStartIcon.classList.remove('hidden');
+        }
+      });
+
+      // QUESTION NAVIGATION BUTTONS
+      document.getElementById('btn-prev-soal').addEventListener('click', () => {
+        goToQuestion(APP.currentIndex - 1);
+      });
+
+      document.getElementById('btn-next-soal').addEventListener('click', () => {
+        if (APP.currentIndex < APP.soalList.length - 1) {
+          goToQuestion(APP.currentIndex + 1);
+        } else {
+          promptSubmitConfirmation();
+        }
+      });
+
+      // RAGU-RAGU TOGGLE
+      document.getElementById('check-ragu-ragu').addEventListener('change', toggleRagu);
+
+      // FINISH BUTTONS
+      document.getElementById('btn-top-finish').addEventListener('click', promptSubmitConfirmation);
+      document.getElementById('btn-bottom-finish').addEventListener('click', promptSubmitConfirmation);
+
+      // MODAL CONFIRMATION CONTROLS
+      const confirmModal = document.getElementById('modal-confirm-submit');
+      document.getElementById('btn-cancel-submit').addEventListener('click', () => {
+        if (confirmModal) confirmModal.close();
+      });
+      document.getElementById('btn-execute-submit').addEventListener('click', () => {
+        calculateAndShowResults();
+      });
+
+      // MODAL TIME-UP CONTROLS
+      document.getElementById('btn-timeup-confirm').addEventListener('click', () => {
+        calculateAndShowResults();
+      });
+
+      // MOBILE NAVIGATION DRAWER
+      const mobileNavModal = document.getElementById('modal-mobile-nav');
+      document.getElementById('btn-toggle-drawer').addEventListener('click', () => {
+        updateNavGrid();
+        if (mobileNavModal && typeof mobileNavModal.showModal === 'function') {
+          mobileNavModal.showModal();
+        }
+      });
+      document.getElementById('btn-close-mobile-nav').addEventListener('click', () => {
+        if (mobileNavModal) mobileNavModal.close();
+      });
+      document.getElementById('btn-mobile-finish-exam').addEventListener('click', () => {
+        if (mobileNavModal) mobileNavModal.close();
+        promptSubmitConfirmation();
+      });
+
+      // RESULT PAGE CONTROLS
+      document.getElementById('btn-download-pdf').addEventListener('click', downloadLaporanPDF);
+      document.getElementById('btn-print-results').addEventListener('click', () => {
+        switchResultTab('laporan');
+        window.print();
+      });
+
+      // RESULT TAB NAVIGATION
+      document.getElementById('tab-btn-laporan').addEventListener('click', () => switchResultTab('laporan'));
+      document.getElementById('tab-btn-pembahasan').addEventListener('click', () => switchResultTab('pembahasan'));
+
+      // RESTART TRYOUT
+      document.getElementById('btn-restart-tryout').addEventListener('click', () => {
+        stopTimer();
+        document.getElementById('view-result').classList.add('hidden');
+        document.getElementById('view-exam').classList.add('hidden');
+        document.getElementById('view-lobby').classList.remove('hidden');
+        document.getElementById('top-sub-info').textContent = 'Bahasa Indonesia & Matematika';
+        document.getElementById('btn-top-finish').classList.add('hidden');
+        document.getElementById('btn-toggle-drawer').classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // RESULT FILTER BUTTONS
+      const filterButtons = document.querySelectorAll('.filter-review-btn');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => {
+            b.className = 'filter-review-btn px-3 py-1.5 rounded-lg transition text-slate-600 hover:text-slate-900';
+          });
+          btn.className = 'filter-review-btn px-3 py-1.5 rounded-lg transition bg-white text-slate-900 shadow-xs';
+          renderSolutionsReview(btn.getAttribute('data-filter'));
+        });
+      });
+
+      renderMath();
+    });
+  </script>
+</body>
+</html>

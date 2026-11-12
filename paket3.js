@@ -1,0 +1,391 @@
+const paket3 = {
+  bahasaIndonesia: [
+    // --- GRUP 1: TEKS INFORMASI EKONOMI SIRKULAR (SOAL 1-3) ---
+    {
+      id: 1,
+      tipe: "PG",
+      stimulus: "<b>Bacalah teks berikut untuk menjawab soal nomor 1 s.d. 3!</b><br><br><b>Ekonomi Sirkular: Mengubah Paradigma Konsumsi Linear</b><br>Model industri konvensional selama berabad-abad bertumpu pada pola ekonomi linear: ambil bahan baku, produksi barang, gunakan, lalu buang (<i>take-make-dispose</i>). Pola ini memicu eksploitasi sumber daya alam secara masif sekaligus menumpuk volume sampah di tempat pembuangan akhir. Sebagai alternatif berkelanjutan, konsep <i>ekonomi sirkular</i> hadir untuk mempertahankan nilai guna produk, komponen, dan material selama mungkin di dalam siklus ekonomi.<br><br>Dalam praktik ekonomi sirkular, limbah dari satu proses produksi dirancang ulang agar menjadi bahan baku bagi proses berikutnya. Pendekatan ini tidak sekadar berhenti pada kegiatan daur ulang (<i>recycling</i>) di hilir, melainkan dimulai sejak tahap perancangan produk (<i>ecodesign</i>) agar barang mudah diperbaiki, ditingkatkan komponennya, atau dibongkar kembali tanpa merusak material inti. Dengan menerapkan prinsip pemulihan dan regenerasi ini, pelaku usaha dapat menekan biaya pengadaan bahan baku baru sekaligus mengurangi jejak emisi karbon industri secara signifikan.",
+      pertanyaan: "Berdasarkan teks tersebut, perbedaan mendasar antara daur ulang konvensional dan ekonomi sirkular terletak pada ...",
+      opsi: [
+        "A. penggunaan mesin berteknologi tinggi untuk membakar seluruh sisa limbah industri",
+        "B. perancangan produk sejak tahap awal hulu agar mudah diperbaiki dan dipulihkan kembali",
+        "C. penghapusan seluruh aktivitas distribusi barang dari pabrik ke tangan konsumen",
+        "D. pemanfaatan bahan baku impor agar cadangan sumber daya alam lokal tetap utuh"
+      ],
+      kunci: "B",
+      pembahasan: "Paragraf kedua menyatakan secara eksplisit bahwa ekonomi sirkular tidak sekadar daur ulang di hilir, melainkan dimulai sejak tahap perancangan produk (ecodesign) agar mudah diperbaiki, ditingkatkan, atau dibongkar kembali."
+    },
+    {
+      id: 2,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada teks 'Ekonomi Sirkular: Mengubah Paradigma Konsumsi Linear')",
+      pertanyaan: "Manakah prinsip atau praktik yang mencerminkan penerapan ekonomi sirkular berdasarkan informasi dalam teks? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Produsen ponsel merancang perangkat modular sehingga baterai dan layar yang rusak mudah diganti tanpa membuang seluruh unit.",
+        "Pabrik tekstil membuang sisa potongan kain ke tempat pembuangan akhir agar gudang produksi tetap bersih.",
+        "Perusahaan furnitur mengumpulkan kembali meja kayu bekas pakai dari pelanggan untuk diolah ulang menjadi produk baru.",
+        "Industri elektronik menciptakan produk sekali pakai dengan masa garansi singkat agar konsumen terus membeli model terbaru."
+      ],
+      kunci: [0, 2],
+      pembahasan: "Opsi 1 mencerminkan perancangan produk agar mudah diperbaiki (ecodesign), dan Opsi 3 mencerminkan pemulihan material ke dalam siklus ekonomi. Opsi 2 dan 4 merupakan ciri ekonomi linear."
+    },
+    {
+      id: 3,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada teks 'Ekonomi Sirkular: Mengubah Paradigma Konsumsi Linear')",
+      pertanyaan: "Tentukan <b>Sesuai</b> atau <b>Tidak Sesuai</b> untuk setiap kesimpulan evaluatif berikut berdasarkan teks!",
+      pernyataan: [
+        "Ekonomi sirkular menuntut perubahan pola pikir tidak hanya dari sisi konsumen, tetapi juga dari tahap desain oleh produsen.",
+        "Penerapan ekonomi sirkular pasti menyebabkan kerugian finansial bagi perusahaan karena biaya produksi meningkat drastis.",
+        "Pengurangan emisi karbon dalam ekonomi sirkular terjadi karena berkurangnya kebutuhan ekstraksi dan pengolahan bahan baku mentah baru."
+      ],
+      kategori: ["Sesuai", "Tidak Sesuai"],
+      kunci: ["Sesuai", "Tidak Sesuai", "Sesuai"],
+      pembahasan: "1) Sesuai, dimulai sejak tahap perancangan produk. 2) Tidak Sesuai, teks menyebut pelaku usaha justru dapat menekan biaya pengadaan bahan baku baru. 3) Sesuai secara inferensial dengan kalimat terakhir teks."
+    },
+
+    // --- GRUP 2: TEKS FIKSI BIOGRAFI / SEJARAH (SOAL 4-6) ---
+    {
+      id: 4,
+      tipe: "PG",
+      stimulus: "<b>Bacalah kutipan cerita berikut untuk menjawab soal nomor 4 s.d. 6!</b><br><br><b>Catatan dari Ruang Redaksi Tua</b><br>Tahun 1947, di sebuah ruangan sempit beraroma tinta cetak di pinggiran Yogyakarta, Suryo menatap mesin tik tuanya dengan tatapan nanar. Kertas koran semakin langka akibat blokade ekonomi, sementara berita mengenai perundingan diplomatik harus segera sampai ke tangan rakyat sebelum kabar simpang siur memecah belah persatuan. Jari-jarinya yang kaku karena udara dingin malam terus menari di atas tuts besi yang beberapa hurufnya sudah aus.<br><br>'Jika kertas putih habis, kita cetak di atas kertas merang pembungkus gula sekalipun,' bisik Suryo kepada rekan setianya, Kartini, yang tengah menyusun klise huruf timah di bawah lampu minyak. Bagi mereka, pena dan mesin tik bukan sekadar alat pencatat peristiwa, melainkan senjata sunyi untuk menjaga nyala harapan kemerdekaan. Ketika fajar menyingsing, ratusan eksemplar buletin darurat itu siap diselipkan di antara keranjang sayur para pedagang menuju stasiun kereta.",
+      pertanyaan: "Makna ungkapan <i>senjata sunyi</i> yang digunakan penulis dalam kutipan cerita tersebut adalah ...",
+      opsi: [
+        "peralatan perang rahasia yang disembunyikan para pejuang di ruang bawah tanah",
+        "tulisan dan pemberitaan media sebagai alat perjuangan mempertahankan kemerdekaan",
+        "strategi gerilya malam hari tanpa menggunakan suara tembakan di sekitar stasiun",
+        "kesepakatan rahasia antara pedagang sayur dan petugas kereta api di Yogyakarta"
+      ],
+      kunci: "B",
+      pembahasan: "Pada kalimat tersebut dijelaskan bahwa 'pena dan mesin tik bukan sekadar alat pencatat peristiwa, melainkan senjata sunyi untuk menjaga nyala harapan kemerdekaan', yang merujuk pada perjuangan melalui karya jurnalistik/pemberitaan."
+    },
+    {
+      id: 5,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada kutipan cerita 'Catatan dari Ruang Redaksi Tua')",
+      pertanyaan: "Latar sosial-historis dan suasana perjuangan yang tergambar dalam cerita tersebut adalah ... (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Keterbatasan logistik akibat blokade ekonomi pada masa awal mempertahankan kemerdekaan.",
+        "Distribusi informasi dilakukan secara sembunyi-sembunyi melalui jaringan rakyat biasa.",
+        "Kemewahan fasilitas percetakan modern yang didukung penuh oleh pemerintah kolonial.",
+        "Semangat pantang menyerah para jurnalis pejuang di tengah keterbatasan sarana kerja."
+      ],
+      kunci: [0, 1, 3],
+      pembahasan: "Teks menyebut tahun 1947 dan kelangkaan kertas akibat blokade ekonomi (1), buletin diselipkan di keranjang sayur pedagang (2), dan kegigihan menggunakan kertas merang serta mesin tik aus (4)."
+    },
+    {
+      id: 6,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada kutipan cerita 'Catatan dari Ruang Redaksi Tua')",
+      pertanyaan: "Tentukan <b>Setuju</b> atau <b>Tidak Setuju</b> terhadap pernyataan relevansi dan apresiasi sastra berikut!",
+      pernyataan: [
+        "Penggunaan detail indrawi seperti 'aroma tinta cetak' dan 'tuts besi yang aus' memperkuat kesan realistis latar waktu sejarah.",
+        "Tindakan Suryo memaksakan penerbitan berita di atas kertas pembungkus gula menunjukkan sikap ceroboh yang membahayakan keselamatan warga.",
+        "Nilai perjuangan dalam cerita ini relevan bagi pelajar masa kini dalam melawan penyebaran berita bohong (hoaks) dengan informasi akurat."
+      ],
+      kategori: ["Setuju", "Tidak Setuju"],
+      kunci: ["Setuju", "Tidak Setuju", "Setuju"],
+      pembahasan: "1) Setuju, detail konkret menghidupkan imajinasi pembaca. 2) Tidak Setuju, itu bentuk kreativitas dan dedikasi untuk mencegah kabar simpang siur. 3) Setuju, sesuai tujuan Suryo mencegah kabar simpang siur memecah belah."
+    },
+
+    // --- GRUP 3: TEKS INFORMASI JAMAK / SINTESIS DATA (SOAL 7-9) ---
+    {
+      id: 7,
+      tipe: "PG",
+      stimulus: "<b>Bacalah dua teks berikut untuk menjawab soal nomor 7 s.d. 9!</b><br><br><b>Teks 1 (Laporan Riset Transportasi Perkotaan)</b><br>Kemacetan lalu lintas di kota-kota besar Indonesia menyebabkan kerugian ekonomi mencapai puluhan triliun rupiah setiap tahun akibat pemborosan bahan bakar dan hilangnya waktu produktif. Pengembangan sistem transportasi umum terintegrasi—seperti bus raya terpadu (BRT) dan kereta komuter—terbukti mampu menurunkan volume kendaraan pribadi hingga 35 persen apabila jarak halte dari permukiman warga tidak melebihi 500 meter.<br><br><b>Teks 2 (Wawancara Pengguna Komuter Harian)</b><br><i>'Sebenarnya saya lebih suka naik kereta komuter ke kantor karena waktu tempuhnya pasti dan bebas stres macet. Masalahnya, dari rumah ke stasiun terdekat jaraknya hampir tiga kilometer dan tidak ada angkutan pengumpan (feeder) yang terjadwal. Kalau pakai ojek daring setiap hari, total biayanya justru lebih mahal daripada mengisi bensin sepeda motor sendiri.'</i>",
+      pertanyaan: "Hubungan logis antara temuan riset pada Teks 1 dan pengalaman narasumber pada Teks 2 adalah ...",
+      opsi: [
+        "Teks 2 membuktikan bahwa kereta komuter tidak lebih cepat dibandingkan sepeda motor pribadi.",
+        "Teks 2 menjelaskan kendala nyata di lapangan terkait syarat jarak akses 500 meter yang disebutkan Teks 1.",
+        "Teks 1 dan Teks 2 sama-sama menyarankan masyarakat untuk tetap menggunakan sepeda motor demi efisiensi biaya.",
+        "Teks 2 membantah temuan Teks 1 karena kemacetan kota besar justru disebabkan oleh banyaknya bus raya terpadu."
+      ],
+      kunci: "B",
+      pembahasan: "Teks 1 menyebut transportasi umum efektif menurunkan kendaraan pribadi jika jarak halte maksimal 500 meter, dan Teks 2 mengonfirmasi hambatan tersebut karena jarak rumah ke stasiun mencapai 3 km tanpa angkutan pengumpan."
+    },
+    {
+      id: 8,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada Teks 1 dan Teks 2)",
+      pertanyaan: "Berdasarkan sintesis kedua teks tersebut, solusi kebijakan transportasi apa saja yang paling tepat untuk mendorong masyarakat beralih ke angkutan umum? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Menyediakan rute angkutan pengumpan (feeder) yang terjadwal dari kawasan permukiman menuju stasiun utama.",
+        "Memperbanyak titik halte pemberhentian agar mudah dijangkau dengan berjalan kaki dari perumahan warga.",
+        "Menaikkan tarif tiket kereta komuter agar setara dengan biaya bahan bakar kendaraan pribadi.",
+        "Mengintegrasikan sistem pembayaran dan jadwal antarmoda transportasi demi kepastian waktu dan biaya."
+      ],
+      kunci: [0, 1, 3],
+      pembahasan: "Menyediakan feeder terjadwal (1), memperdekat jarak halte maksimal 500 m (2), dan integrasi sistem agar biaya terjangkau (4) langsung menjawab masalah di Teks 1 dan 2. Menaikkan tarif (3) justru menjauhkan pengguna."
+    },
+    {
+      id: 9,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada Teks 1 dan Teks 2)",
+      pertanyaan: "Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan evaluasi berdasarkan kedua teks!",
+      pernyataan: [
+        "Narasumber pada Teks 2 enggan menggunakan kereta komuter karena kereta sering mengalami keterlambatan jadwal.",
+        "Masalah koneksi jarak dekat dari rumah ke stasiun (first-mile problem) menjadi faktor penentu keputusan warga memilih moda transportasi.",
+        "Kemacetan perkotaan berdampak ganda, yakni merugikan secara finansial dan mengurangi waktu produktif masyarakat."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Salah", "Benar", "Benar"],
+      pembahasan: "1) Salah, narasumber justru menyebut kereta komuter waktu tempuhnya pasti dan bebas stres macet. 2) Benar. 3) Benar, sesuai kalimat pertama Teks 1."
+    },
+
+    // --- GRUP 4: TEKS PUISI REFLEKTIF (SOAL 10-12) ---
+    {
+      id: 10,
+      tipe: "PG",
+      stimulus: "<b>Bacalah puisi berikut untuk menjawab soal nomor 10 s.d. 12!</b><br><br><b>Peta di Telapak Tangan</b><br><i>Garis-garis halus di telapak tangan ayahku,<br>Adalah sungai-sungai kecil yang mengalirkan peluh ke muara masa depanku.<br>Setiap kapalan yang mengeras di pangkal jarinya,<br>Ialah batu karang yang menahan gelombang kerasnya dunia.<br>Aku membaca sejarah hidupku pada genggaman yang mulai gemetar itu,<br>Sebuah kitab sunyi yang mengajarkan arti cinta tanpa pernah mengucap kata.</i>",
+      pertanyaan: "Majas metafora yang menyamakan kerja keras ayah sebagai pelindung keluarga dari tantangan hidup terdapat pada larik ...",
+      opsi: [
+        "A. Garis-garis halus di telapak tangan ayahku",
+        "B. Adalah sungai-sungai kecil yang mengalirkan peluh ke muara masa depanku",
+        "C. Ialah batu karang yang menahan gelombang kerasnya dunia",
+        "D. Aku membaca sejarah hidupku pada genggaman yang mulai gemetar itu"
+      ],
+      kunci: "C",
+      pembahasan: "Kapalan di tangan ayah diibaratkan secara langsung sebagai 'batu karang yang menahan gelombang kerasnya dunia' (perlindungan dari tantangan hidup)."
+    },
+    {
+      id: 11,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada puisi 'Peta di Telapak Tangan')",
+      pertanyaan: "Makna dan nilai emosional yang tergambar dalam puisi tersebut adalah ... (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Penghormatan dan rasa syukur seorang anak atas pengorbanan ayahnya yang telah menua.",
+        "Kasih sayang orang tua sering kali diwujudkan melalui tindakan nyata daripada ucapan lisan.",
+        "Penyesalan seorang anak karena ayahnya tidak mewariskan harta benda yang berlimpah.",
+        "Kesadaran tokoh 'aku' bahwa keberhasilan masa depannya ditopang oleh kerja keras ayahnya."
+      ],
+      kunci: [0, 1, 3],
+      pembahasan: "Genggaman mulai gemetar menunjukkan ayah menua dan anak menghormatinya (1), 'cinta tanpa pernah mengucap kata' bermakna kasih lewat tindakan (2), dan 'mengalirkan peluh ke muara masa depanku' bermakna pengorbanan demi masa depan anak (4)."
+    },
+    {
+      id: 12,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada puisi 'Peta di Telapak Tangan')",
+      pertanyaan: "Tentukan <b>Sesuai</b> atau <b>Tidak Sesuai</b> untuk interpretasi unsur puisi berikut!",
+      pernyataan: [
+        "Judul 'Peta di Telapak Tangan' merujuk pada guratan tangan ayah yang merekam perjalanan panjang pengorbanannya.",
+        "Frasa 'kitab sunyi' pada larik terakhir melambangkan keteladanan hidup ayah yang menjadi pelajaran berharga bagi anaknya.",
+        "Suasana yang dibangun penyair dalam puisi ini adalah kemarahan dan kekecewaan terhadap masa lalu."
+      ],
+      kategori: ["Sesuai", "Tidak Sesuai"],
+      kunci: ["Sesuai", "Sesuai", "Tidak Sesuai"],
+      pembahasan: "1) Sesuai. 2) Sesuai. 3) Tidak Sesuai, suasana puisi penuh rasa haru, takzim, dan penghormatan."
+    },
+
+    // --- GRUP 5: TEKS INFORMASI LITERASI DIGITAL / AI (SOAL 13-15) ---
+    {
+      id: 13,
+      tipe: "PG",
+      stimulus: "<b>Bacalah teks berikut untuk menjawab soal nomor 13 s.d. 15!</b><br><br><b>Fenomena Ruang Gema (<i>Echo Chamber</i>) di Media Sosial</b><br>Algoritma pada platform media sosial dirancang untuk memaksimalkan durasi interaksi pengguna dengan menyajikan konten yang sesuai dengan riwayat klik, pencarian, dan ketertarikan sebelumnya. Meskipun memudahkan pengguna menemukan informasi yang relevan, mekanisme penyaringan otomatis ini berpotensi menciptakan fenomena <i>ruang gema</i> atau <i>echo chamber</i>. Di dalam ruang gema, pengguna hanya terpapar pada opini, keyakinan, dan sudut pandang yang seragam dengan pemikirannya sendiri, sementara pandangan yang berbeda secara perlahan tersingkir dari linimasa.<br><br>Dampak jangka panjang dari ruang gema adalah meningkatnya polarisasi sosial dan menurunnya kemampuan berpikir kritis. Ketika seseorang terus-menerus melihat informasi yang membenarkan asumsi pribadinya, ia cenderung menganggap pendapat kelompoknya sebagai satu-satunya kebenaran mutlak dan mudah terprovokasi oleh disinformasi. Untuk keluar dari jebakan algoritma ini, pengguna perlu secara sadar mencari sumber berita yang beragam, memverifikasi fakta lintas media, serta berdiskusi secara terbuka dengan sudut pandang yang berbeda.",
+      pertanyaan: "Penyebab utama terbentuknya fenomena <i>ruang gema</i> di media sosial berdasarkan teks adalah ...",
+      opsi: [
+        "keterbatasan kapasitas server media sosial dalam menyimpan unggahan berita dari berbagai negara",
+        "sistem algoritma yang memfilter dan menampilkan konten berdasarkan kesamaan riwayat preferensi pengguna",
+        "kebijakan pemerintah yang melarang pengguna mengikuti akun berita dengan sudut pandang berbeda",
+        "tingginya biaya berlangganan akses internet untuk membuka situs web verifikasi fakta independen"
+      ],
+      kunci: "B",
+      pembahasan: "Paragraf pertama menjelaskan bahwa algoritma menyajikan konten sesuai riwayat klik/ketertarikan pengguna sehingga menyingkirkan pandangan berbeda dan menciptakan ruang gema."
+    },
+    {
+      id: 14,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada teks 'Fenomena Ruang Gema di Media Sosial')",
+      pertanyaan: "Manakah dampak negatif yang ditimbulkan apabila seseorang terjebak dalam <i>ruang gema</i> digital? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Menguatnya sikap intoleran karena menganggap pandangan kelompok sendiri paling mutlak benar.",
+        "Menurunnya daya kritis dalam menyaring kebenaran informasi yang beredar di linimasa.",
+        "Meningkatnya kerentanan pengguna untuk mempercayai dan menyebarkan disinformasi.",
+        "Hilangnya seluruh akses pengguna terhadap fitur pencarian di internet."
+      ],
+      kunci: [0, 1, 2],
+      pembahasan: "Paragraf kedua menyebutkan dampak ruang gema: polarisasi sosial/menganggap pendapatnya kebenaran mutlak (1), menurunnya kemampuan berpikir kritis (2), dan mudah terprovokasi disinformasi (3)."
+    },
+    {
+      id: 15,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada teks 'Fenomena Ruang Gema di Media Sosial')",
+      pertanyaan: "Tentukan <b>Benar</b> atau <b>Salah</b> mengenai strategi mengatasi dampak algoritma media sosial berdasarkan teks!",
+      pernyataan: [
+        "Mengikuti akun media informasi dari berbagai latar belakang sudut pandang dapat membantu memecah ruang gema.",
+        "Algoritma media sosial secara otomatis akan menampilkan berita berimbang tanpa perlu usaha sadar dari pengguna.",
+        "Kebiasaan memeriksa silang (cross-check) informasi pada media kredibel melatih ketahanan terhadap disinformasi."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Salah", "Benar"],
+      pembahasan: "1) Benar. 2) Salah, teks menegaskan pengguna perlu 'secara sadar' mencari sumber beragam untuk keluar dari algoritma. 3) Benar."
+    }
+  ],
+
+  matematika: [
+    {
+      id: 1,
+      tipe: "PG",
+      elemen: "Bilangan",
+      pertanyaan: "Sebuah toko elektronik memberikan diskon bertingkat $20\\% + 10\\%$ untuk pembelian sebuah laptop. Jika harga setelah kedua diskon tersebut adalah $\\text{Rp}5.760.000,00$, maka harga awal laptop sebelum didiskon adalah ...",
+      opsi: ["A. $\\text{Rp}7.500.000,00$", "B. $\\text{Rp}8.000.000,00$", "C. $\\text{Rp}8.200.000,00$", "D. $\\text{Rp}8.500.000,00$"],
+      kunci: "B",
+      pembahasan: "Diskon bertingkat $20\\% + 10\\%$ berarti harga bayar $= 0,80 \\times 0,90 \\times H_0 = 0,72 H_0$. Maka $0,72 H_0 = 5.760.000 \\Rightarrow H_0 = \\frac{5.760.000}{0,72} = \\text{Rp}8.000.000,00$."
+    },
+    {
+      id: 2,
+      tipe: "PG",
+      elemen: "Bilangan",
+      pertanyaan: "Diketahui bilangan $A = 2^{300}$, $B = 3^{200}$, dan $C = 5^{100}$. Urutan bilangan tersebut dari yang terkecil hingga terbesar adalah ...",
+      opsi: ["A. $A, B, C$", "B. $C, A, B$", "C. $C, B, A$", "D. $B, A, C$"],
+      kunci: "B",
+      pembahasan: "Ubah ke pangkat yang sama ($100$): $A = (2^3)^{100} = 8^{100}$; $B = (3^2)^{100} = 9^{100}$; $C = 5^{100}$. Karena $5 < 8 < 9$, urutan dari terkecil adalah $C, A, B$."
+    },
+    {
+      id: 3,
+      tipe: "PGK_MCMA",
+      elemen: "Bilangan",
+      pertanyaan: "Untuk membuat $12$ loyang kue bolu dibutuhkan $1,8\\text{ kg}$ tepung terigu dan $15$ butir telur. Jika seorang pembuat kue mendapat pesanan $20$ loyang kue bolu yang sama, manakah pernyataan berikut yang benar? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Tepung terigu yang dibutuhkan seluruhnya adalah $3\\text{ kg}$.",
+        "Banyak telur yang dibutuhkan seluruhnya adalah $25$ butir.",
+        "Jika di dapur sudah tersedia $1,2\\text{ kg}$ tepung, maka kekurangan tepung adalah $1,8\\text{ kg}$.",
+        "Rasio kebutuhan tepung (dalam gram) terhadap banyak telur adalah $100 : 1$."
+      ],
+      kunci: [0, 1, 2],
+      pembahasan: "Faktor pengali $= \\frac{20}{12} = \\frac{5}{3}$. Tepung $= \\frac{5}{3} \\times 1,8 = 3\\text{ kg}$ (1 Benar). Telur $= \\frac{5}{3} \\times 15 = 25$ butir (2 Benar). Kekurangan tepung $= 3 - 1,2 = 1,8\\text{ kg}$ (3 Benar). Rasio tepung : telur $= 3.000\\text{ g} : 25 = 120 : 1$ (4 Salah)."
+    },
+    {
+      id: 4,
+      tipe: "PG",
+      elemen: "Aljabar",
+      pertanyaan: "Selisih dua bilangan positif adalah $5$, sedangkan jumlah kuadrat kedua bilangan tersebut adalah $157$. Jumlah kedua bilangan tersebut adalah ...",
+      opsi: ["A. $15$", "B. $17$", "C. $19$", "D. $21$"],
+      kunci: "B",
+      pembahasan: "Misal $a - b = 5$ dan $a^2 + b^2 = 157$. Dari $(a - b)^2 = a^2 - 2ab + b^2 \\Rightarrow 25 = 157 - 2ab \\Rightarrow 2ab = 132$. Maka $(a + b)^2 = a^2 + 2ab + b^2 = 157 + 132 = 289 \\Rightarrow a + b = \\sqrt{289} = 17$."
+    },
+    {
+      id: 5,
+      tipe: "PG",
+      elemen: "Aljabar",
+      pertanyaan: "Sebuah tempat parkir menampung $45$ kendaraan yang terdiri dari sepeda motor dan mobil. Jumlah seluruh roda kendaraan di tempat parkir tersebut adalah $126$ roda. Jika tarif parkir sepeda motor $\\text{Rp}2.000,00$ dan mobil $\\text{Rp}5.000,00$, maka total pendapatan parkir saat itu adalah ...",
+      opsi: ["A. $\\text{Rp}135.000,00$", "B. $\\text{Rp}144.000,00$", "C. $\\text{Rp}150.000,00$", "D. $\\text{Rp}162.000,00$"],
+      kunci: "B",
+      pembahasan: "$x + y = 45$ dan $2x + 4y = 126 \\Rightarrow x + 2y = 63$. Eliminasi: $y = 63 - 45 = 18$ (mobil), $x = 45 - 18 = 27$ (motor). Pendapatan $= (27 \\times 2.000) + (18 \\times 5.000) = 54.000 + 90.000 = \\text{Rp}144.000,00$."
+    },
+    {
+      id: 6,
+      tipe: "PGK_KATEGORI",
+      elemen: "Aljabar",
+      pertanyaan: "Dalam sebuah gedung pertunjukan, baris paling depan berisi $16$ kursi, baris kedua $20$ kursi, baris ketiga $24$ kursi, dan seterusnya selalu bertambah $4$ kursi hingga baris ke-$15$. Tentukan <b>Benar</b> atau <b>Salah</b> untuk pernyataan berikut!",
+      pernyataan: [
+        "Banyak kursi pada baris paling belakang (baris ke-$15$) adalah $72$ kursi.",
+        "Kapasitas total seluruh kursi di dalam gedung tersebut adalah $660$ kursi.",
+        "Jika harga tiket baris ke-$1$ sampai ke-$5$ adalah $\\text{Rp}50.000,00$ per kursi dan seluruh kursi terisi penuh, pendapatan dari lima baris depan tersebut adalah $\\text{Rp}6.000.000,00$."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Benar", "Benar"],
+      pembahasan: "$U_{15} = 16 + 14(4) = 16 + 56 = 72$ (Benar). $S_{15} = \\frac{15}{2}(16 + 72) = 15 \\times 44 = 660$ (Benar). $S_5 = \\frac{5}{2}(2(16) + 4(4)) = \\frac{5}{2}(48) = 120$ kursi; pendapatan $= 120 \\times 50.000 = \\text{Rp}6.000.000,00$ (Benar)."
+    },
+    {
+      id: 7,
+      tipe: "PGK_MCMA",
+      elemen: "Aljabar",
+      pertanyaan: "Diketahui fungsi $f(2x - 1) = 6x + 5$. Manakah pernyataan yang benar mengenai fungsi $f$ tersebut? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Rumus fungsi $f(x)$ adalah $3x + 8$.",
+        "Nilai dari $f(3)$ adalah $17$.",
+        "Jika $f(a) = 2$, maka nilai $a$ adalah $-2$.",
+        "Nilai dari $f(0) + f(1)$ adalah $19$."
+      ],
+      kunci: [0, 1, 2, 3],
+      pembahasan: "Misal $p = 2x - 1 \\Rightarrow x = \\frac{p + 1}{2}$. Maka $f(p) = 6(\\frac{p+1}{2}) + 5 = 3p + 3 + 5 = 3p + 8 \\Rightarrow f(x) = 3x + 8$ (1 Benar). $f(3) = 3(3) + 8 = 17$ (2 Benar). $3a + 8 = 2 \\Rightarrow a = -2$ (3 Benar). $f(0) + f(1) = 8 + 11 = 19$ (4 Benar)."
+    },
+    {
+      id: 8,
+      tipe: "PG",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Sebuah taman berbentuk persegi panjang berukuran $30\\text{ m} \\times 20\\text{ m}$. Di sekeliling bagian dalam tepi taman dibuat jalan setapak berkerikil selebar $2\\text{ m}$, sedangkan bagian tengahnya ditanami rumput. Jika biaya pemasangan kerikil adalah $\\text{Rp}60.000,00/\\text{m}^2$, maka total biaya pembuatan jalan setapak tersebut adalah ...",
+      opsi: ["A. $\\text{Rp}10.080.000,00$", "B. $\\text{Rp}11.040.000,00$", "C. $\\text{Rp}12.000.000,00$", "D. $\\text{Rp}24.960.000,00$"],
+      kunci: "B",
+      pembahasan: "Luas taman luar $= 30 \\times 20 = 600\\text{ m}^2$. Ukuran bagian rumput dalam $= (30 - 4) \\times (20 - 4) = 26 \\times 16 = 416\\text{ m}^2$. Luas jalan $= 600 - 416 = 184\\text{ m}^2$. Biaya $= 184 \\times 60.000 = \\text{Rp}11.040.000,00$."
+    },
+    {
+      id: 9,
+      tipe: "PG",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Sebuah kerucut memiliki diameter alas $14\\text{ cm}$ dan tinggi $24\\text{ cm}$. Luas seluruh permukaan kerucut tersebut adalah ... ($\\pi = \\frac{22}{7}$)",
+      opsi: ["A. $550\\text{ cm}^2$", "B. $682\\text{ cm}^2$", "C. $704\\text{ cm}^2$", "D. $1.232\\text{ cm}^2$"],
+      kunci: "C",
+      pembahasan: "$r = 7\\text{ cm}$, $t = 24\\text{ cm}$. Garis pelukis $s = \\sqrt{7^2 + 24^2} = 25\\text{ cm}$. Luas permukaan $= \\pi r (r + s) = \\frac{22}{7} \\times 7 \\times (7 + 25) = 22 \\times 32 = 704\\text{ cm}^2$."
+    },
+    {
+      id: 10,
+      tipe: "PGK_KATEGORI",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Dua buah bola padat masing-masing berjari-jari $r_1 = 3\\text{ cm}$ dan $r_2 = 6\\text{ cm}$. Tentukan <b>Benar</b> atau <b>Salah</b> untuk pernyataan perbandingan kedua bola tersebut!",
+      pernyataan: [
+        "Perbandingan luas permukaan bola pertama dan bola kedua adalah $1 : 4$.",
+        "Perbandingan volume bola pertama dan bola kedua adalah $1 : 8$.",
+        "Jika kedua bola dilebur menjadi satu bola baru, jari-jari bola baru tersebut adalah $9\\text{ cm}$."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Benar", "Salah"],
+      pembahasan: "Perbandingan $r_1 : r_2 = 1 : 2$. Perbandingan luas $= 1^2 : 2^2 = 1 : 4$ (Benar). Perbandingan volume $= 1^3 : 2^3 = 1 : 8$ (Benar). Peleburan volume: $R^3 = 3^3 + 6^3 = 27 + 216 = 243 \\neq 9^3 (729)$ (Pernyataan 3 Salah)."
+    },
+    {
+      id: 11,
+      tipe: "PG",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Sebuah tiang bendera setinggi $6\\text{ m}$ memiliki panjang bayangan $4,5\\text{ m}$ pada saat yang sama ketika sebuah gedung bertingkat memiliki panjang bayangan $18\\text{ m}$. Tinggi gedung bertingkat tersebut adalah ...",
+      opsi: ["A. $13,5\\text{ m}$", "B. $20\\text{ m}$", "C. $24\\text{ m}$", "D. $27\\text{ m}$"],
+      kunci: "C",
+      pembahasan: "Konsep kesebangunan: $\\frac{t_{\\text{gedung}}}{6} = \\frac{18}{4,5} \\Rightarrow \\frac{t_{\\text{gedung}}}{6} = 4 \\Rightarrow t_{\\text{gedung}} = 24\\text{ m}$."
+    },
+    {
+      id: 12,
+      tipe: "PGK_MCMA",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Garis $2x - 3y = 6$ ditranslasikan oleh $T = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$. Manakah pernyataan yang benar mengenai garis hasil bayangannya? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Persamaan garis bayangannya adalah $2x - 3y = 13$.",
+        "Gradien garis bayangan tetap sama dengan gradien garis asal yaitu $\\frac{2}{3}$.",
+        "Garis bayangan melalui titik $(5, -1)$.",
+        "Garis bayangan memotong sumbu-$X$ di titik $(6, 0)$."
+      ],
+      kunci: [0, 1, 2],
+      pembahasan: "Substitusi $x = x' - 2$ dan $y = y' + 1$: $2(x' - 2) - 3(y' + 1) = 6 \\Rightarrow 2x' - 4 - 3y' - 3 = 6 \\Rightarrow 2x - 3y = 13$ (1 Benar). Translasi tidak mengubah kemiringan/gradien $m = \\frac{2}{3}$ (2 Benar). Cek $(5, -1)$: $2(5) - 3(-1) = 13$ (3 Benar). Potong sumbu-$X$ saat $y=0$ adalah $(6,5; 0)$ (4 Salah)."
+    },
+    {
+      id: 13,
+      tipe: "PG",
+      elemen: "Data dan Peluang",
+      pertanyaan: "Diagram lingkaran berikut menunjukkan data kegemaran olahraga $200$ siswa SMP:<br>• Futsal: $35\\%$<br>• Basket: $90^\\circ$<br>• Bulu Tangkis: $25\\%$<br>• Renang: sisanya<br>Banyak siswa yang gemar olahraga Renang adalah ...",
+      opsi: ["A. $25$ siswa", "B. $30$ siswa", "C. $35$ siswa", "D. $40$ siswa"],
+      kunci: "B",
+      pembahasan: "Basket $= \\frac{90^\\circ}{360^\\circ} \\times 100\\% = 25\\%$. Persentase Renang $= 100\\% - (35\\% + 25\\% + 25\\%) = 15\\%$. Banyak siswa $= 15\\% \\times 200 = 30$ siswa."
+    },
+    {
+      id: 14,
+      tipe: "PG",
+      elemen: "Data dan Peluang",
+      pertanyaan: "Dua buah dadu homogen dilemparkan bersama-sama satu kali. Peluang munculnya mata dadu berjumlah lebih dari $9$ adalah ...",
+      opsi: ["A. $\\dfrac{1}{12}$", "B. $\\dfrac{1}{9}$", "C. $\\dfrac{1}{6}$", "D. $\\dfrac{5}{36}$"],
+      kunci: "C",
+      pembahasan: "Jumlah $> 9$ berarti jumlah $10, 11,$ atau $12$. Pasangannya: $(4,6), (5,5), (6,4), (5,6), (6,5), (6,6)$ ada $6$ kejadian dari $36$ ruang sampel. Peluang $= \\frac{6}{36} = \\frac{1}{6}$."
+    },
+    {
+      id: 15,
+      tipe: "PGK_KATEGORI",
+      elemen: "Data dan Peluang",
+      pertanyaan: "Rata-rata tinggi badan siswa putra di suatu kelas adalah $165\\text{ cm}$, sedangkan rata-rata tinggi badan siswa putri adalah $155\\text{ cm}$. Jika rata-rata tinggi badan seluruh siswa di kelas tersebut (berjumlah $30$ siswa) adalah $161\\text{ cm}$, tentukan <b>Benar</b> atau <b>Salah</b> untuk pernyataan berikut!",
+      pernyataan: [
+        "Perbandingan banyak siswa putra dan siswa putri di kelas tersebut adalah $3 : 2$.",
+        "Banyak siswa putra di kelas tersebut adalah $18$ siswa.",
+        "Banyak siswa putri di kelas tersebut adalah $15$ siswa."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Benar", "Salah"],
+      pembahasan: "$165n_a + 155n_i = 161(n_a + n_i) \\Rightarrow 4n_a = 6n_i \\Rightarrow \\frac{n_a}{n_i} = \\frac{6}{4} = \\frac{3}{2}$ (1 Benar). Putra $= \\frac{3}{5} \\times 30 = 18$ siswa (2 Benar). Putri $= \\frac{2}{5} \\times 30 = 12$ siswa (3 Salah)."
+    }
+  ]
+};

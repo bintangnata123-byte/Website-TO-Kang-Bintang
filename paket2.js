@@ -1,0 +1,396 @@
+const paket2 = {
+  bahasaIndonesia: [
+    // --- GRUP 1: TEKS INFORMASI SAINS & LINGKUNGAN (SOAL 1-3) ---
+    {
+      id: 1,
+      tipe: "PG",
+      stimulus: "<b>Bacalah teks berikut untuk menjawab soal nomor 1 s.d. 3!</b><br><br><b>Karbon Biru: Benteng Alami Pesisir dari Krisis Iklim</b><br>Selama ini, hutan hujan tropis sering disebut sebagai paru-paru dunia karena kemampuannya menyerap emisi karbon dioksida dari atmosfer. Namun, penelitian ekologi kelautan menunjukkan bahwa ekosistem pesisir—yang meliputi hutan mangrove, padang lamun, dan rawa payau—memiliki kapasitas penyerapan karbon yang jauh lebih efisien per satuan luas. Simpanan karbon yang diserap dan dikunci oleh ekosistem pesisir serta lautan ini dikenal dengan istilah <i>karbon biru</i> (<i>blue carbon</i>).<br><br>Berbeda dengan hutan daratan yang menyimpan sebagian besar karbonnya pada batang dan dedaunan, ekosistem karbon biru mengendapkan hingga 90 persen karbonnya di dalam sedimen tanah berlumpur yang minim oksigen. Kondisi tanah yang jenuh air ini memperlambat proses dekomposisi bahan organik sehingga karbon dapat terkunci selama ribuan tahun. Sayangnya, alih fungsi lahan pesisir menjadi tambak intensif atau kawasan reklamasi justru melepaskan kembali cadangan karbon purba tersebut ke atmosfer dalam jumlah masif, sehingga mempercepat laju pemanasan global.",
+      pertanyaan: "Berdasarkan teks tersebut, faktor utama yang membuat ekosistem karbon biru mampu mengunci karbon hingga ribuan tahun adalah ...",
+      opsi: [
+        "A. luas wilayah pesisir yang jauh melampaui luas hutan hujan tropis di daratan",
+        "B. lambatnya proses penguraian bahan organik akibat sedimen tanah yang minim oksigen",
+        "C. tingginya kandungan garam laut yang membekukan batang dan dedaunan mangrove",
+        "D. adanya aktivitas reklamasi pesisir yang mempercepat pengendapan lumpur laut"
+      ],
+      kunci: "B",
+      pembahasan: "Paragraf kedua menjelaskan bahwa ekosistem karbon biru mengendapkan karbon di sedimen berlumpur minim oksigen (jenuh air), yang memperlambat proses dekomposisi (penguraian) sehingga karbon terkunci ribuan tahun."
+    },
+    {
+      id: 2,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada teks 'Karbon Biru: Benteng Alami Pesisir dari Krisis Iklim')",
+      pertanyaan: "Manakah pernyataan yang menggambarkan perbedaan karakteristik antara hutan daratan dan ekosistem karbon biru berdasarkan teks? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Hutan daratan menyimpan mayoritas karbon pada bagian biomassa atas seperti batang dan daun.",
+        "Ekosistem pesisir memiliki efisiensi penyerapan karbon per satuan luas yang lebih tinggi.",
+        "Hutan daratan mengendapkan seluruh cadangan karbonnya di dalam lapisan tanah jenuh air.",
+        "Kerusakan ekosistem karbon biru berpotensi melepaskan emisi karbon yang telah tersimpan lama."
+      ],
+      kunci: [0, 1, 3],
+      pembahasan: "Paragraf 1 menyebut efisiensi karbon biru lebih tinggi per satuan luas (opsi 2). Paragraf 2 membedakan lokasi simpanan: hutan daratan di batang/daun (opsi 1), karbon biru di sedimen, dan kerusakannya melepaskan karbon purba (opsi 4)."
+    },
+    {
+      id: 3,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada teks 'Karbon Biru: Benteng Alami Pesisir dari Krisis Iklim')",
+      pertanyaan: "Tentukan <b>Sesuai</b> atau <b>Tidak Sesuai</b> untuk setiap kesimpulan logis berikut berdasarkan informasi dalam teks!",
+      pernyataan: [
+        "Pelestarian padang lamun dan rawa payau sama pentingnya dengan menjaga hutan mangrove dalam mitigasi perubahan iklim.",
+        "Pembukaan tambak baru dengan membabat hutan mangrove hanya berdampak pada berkurangnya populasi ikan tanpa memengaruhi suhu bumi.",
+        "Pengeringan lahan rawa payau pesisir akan mempercepat pelepasan karbon karena oksigen masuk dan memicu dekomposisi."
+      ],
+      kategori: ["Sesuai", "Tidak Sesuai"],
+      kunci: ["Sesuai", "Tidak Sesuai", "Sesuai"],
+      pembahasan: "1) Sesuai, ketiganya termasuk ekosistem karbon biru. 2) Tidak Sesuai, pembabatan melepas karbon masif dan mempercepat pemanasan global. 3) Sesuai secara inferensial karena pengeringan menghilangkan kondisi jenuh air/minim oksigen yang menahan dekomposisi."
+    },
+
+    // --- GRUP 2: TEKS FIKSI REALISME / KONFLIK BATIN (SOAL 4-6) ---
+    {
+      id: 4,
+      tipe: "PG",
+      stimulus: "<b>Bacalah kutipan cerita berikut untuk menjawab soal nomor 4 s.d. 6!</b><br><br><b>Sepatu Lari di Etalase Kaca</b><br>Setiap pulang dari latihan atletik, langkah Dimas selalu melambat di depan toko olahraga Jalan Merdeka. Matanya tertuju pada sepasang sepatu lari biru dengan sol ringan yang terpajang di etalase kaca. Sepatu lamanya sudah mulai menipis di bagian tumit, sementara seleksi kejuaraan tingkat provinsi tinggal tiga pekan lagi. Dimas tahu persis, gaji ayahnya sebagai petugas kebersihan sekolah hanya cukup untuk memenuhi kebutuhan dapur dan biaya sekolah adiknya.<br><br>Malam itu, Dimas membongkar celengan kaleng di sudut lemari. Uang kertas dan logam yang terkumpul selama enam bulan ia hitung dengan teliti—masih kurang hampir separuh dari harga sepatu impiannya. Alih-alih merengek kepada ayahnya, keesokan harinya Dimas menemui Pak Hendra, pelatihnya, untuk menawarkan diri membantu merapikan peralatan latihan setiap sore dengan imbalan seikhlasnya. Dua pekan berselang, bukan sepatu baru yang ia beli, melainkan jasa sol sepatu terbaik di pasar untuk memperkuat sepatu lamanya, sementara sisa uang tabungannya ia belikan buku paket untuk adiknya.",
+      pertanyaan: "Konflik batin utama yang dialami tokoh Dimas dalam kutipan cerita tersebut adalah ...",
+      opsi: [
+        "keinginan memiliki sepatu lari baru yang berbenturan dengan keterbatasan ekonomi keluarga",
+        "rasa malu kepada pelatihnya karena tidak mampu membeli perlengkapan latihan yang layak",
+        "kebingungan memilih antara mengikuti kejuaraan provinsi atau bekerja membantu ayahnya",
+        "kekecewaan terhadap adiknya yang menggunakan uang tabungan untuk membeli buku paket"
+      ],
+      kunci: "A",
+      pembahasan: "Dimas sangat menginginkan sepatu baru untuk lomba provinsi, namun ia sadar kondisi ekonomi ayahnya terbatas dan adiknya juga membutuhkan biaya sekolah."
+    },
+    {
+      id: 5,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada kutipan cerita 'Sepatu Lari di Etalase Kaca')",
+      pertanyaan: "Karakter atau watak tokoh Dimas yang tergambar melalui tindakan dan pikirannya dalam cerita adalah ... (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Empatik dan peka terhadap kondisi keuangan orang tuanya.",
+        "Mandiri dan mau bekerja keras mencari solusi tanpa membebani orang lain.",
+        "Mudah menyerah ketika mengetahui tabungannya tidak mencukupi.",
+        "Peduli dan mengutamakan kebutuhan pendidikan adiknya di atas keinginan pribadi."
+      ],
+      kunci: [0, 1, 3],
+      pembahasan: "Dimas memahami keterbatasan gaji ayahnya (empatik - 1), mencari tambahan uang dengan membantu pelatih (mandiri - 2), dan menyisihkan uang untuk buku adiknya (peduli - 4)."
+    },
+    {
+      id: 6,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada kutipan cerita 'Sepatu Lari di Etalase Kaca')",
+      pertanyaan: "Tentukan <b>Setuju</b> atau <b>Tidak Setuju</b> terhadap penilaian atas keputusan akhir tokoh Dimas berikut!",
+      pernyataan: [
+        "Keputusan Dimas memperbaiki sepatu lamanya menunjukkan sikap bijaksana dalam membedakan antara kebutuhan dan keinginan.",
+        "Tindakan Dimas bekerja membantu pelatih membuktikan bahwa prestasi olahraga hanya bisa diraih dengan perlengkapan mahal.",
+        "Cerita tersebut memberikan inspirasi bahwa keterbatasan materi tidak menghalangi seseorang untuk tetap bertanggung jawab."
+      ],
+      kategori: ["Setuju", "Tidak Setuju"],
+      kunci: ["Setuju", "Tidak Setuju", "Setuju"],
+      pembahasan: "1) Setuju, ia tetap bisa berlomba dengan sepatu yang diperbaiki sekaligus memenuhi kebutuhan buku adiknya. 2) Tidak Setuju, justru Dimas membuktikan usaha dan kesiapan lebih utama daripada sepatu mahal. 3) Setuju."
+    },
+
+    // --- GRUP 3: TEKS INFORMASI JAMAK / ARGUMENTATIF (SOAL 7-9) ---
+    {
+      id: 7,
+      tipe: "PG",
+      stimulus: "<b>Bacalah dua teks berikut untuk menjawab soal nomor 7 s.d. 9!</b><br><br><b>Teks 1 (Tajuk Rencana Pendidikan)</b><br>Penerapan larangan membawa gawai pribadi ke lingkungan sekolah menengah dinilai efektif meningkatkan fokus belajar serta interaksi sosial tatap muka antarsiswa. Data survei internal di beberapa sekolah percontohan menunjukkan penurunan kasus perundungan siber di jam pelajaran hingga 60 persen setelah kebijakan loker gawai diberlakukan. Sekolah harus menjadi ruang aman yang melatih konsentrasi mendalam tanpa distraksi notifikasi digital.<br><br><b>Teks 2 (Opini Pemerhati Literasi Digital)</b><br>Pelarangan total gawai di sekolah justru berisiko menjauhkan siswa dari realitas literasi digital yang sehat. Di era akses informasi terbuka, siswa perlu dibimbing menggunakan perangkat pintar sebagai alat riset, verifikasi fakta, dan kolaborasi akademik di bawah pengawasan guru. Tanpa pendampingan langsung di sekolah, siswa justru rentan menyalahgunakan gawai secara bebas tanpa kontrol di luar jam sekolah.",
+      pertanyaan: "Inti perbedaan sudut pandang antara Teks 1 dan Teks 2 mengenai keberadaan gawai di sekolah adalah ...",
+      opsi: [
+        "Teks 1 menekankan penghilangan distraksi demi fokus sosial-akademik, sedangkan Teks 2 menekankan pendampingan pemanfaatan gawai sebagai sarana belajar.",
+        "Teks 1 menolak kemajuan teknologi pendidikan, sedangkan Teks 2 mewajibkan seluruh mata pelajaran menggunakan aplikasi daring.",
+        "Teks 1 menyoroti tingginya biaya pengadaan loker sekolah, sedangkan Teks 2 membahas bahaya kecanduan gim daring pada remaja.",
+        "Teks 1 berfokus pada peran orang tua di rumah, sedangkan Teks 2 berfokus pada sanksi tegas bagi siswa yang melanggar aturan."
+      ],
+      kunci: "A",
+      pembahasan: "Teks 1 mendukung pelarangan gawai untuk menghilangkan distraksi dan meningkatkan interaksi langsung, sedangkan Teks 2 memandang gawai perlu diizinkan dengan bimbingan guru untuk melatih literasi digital."
+    },
+    {
+      id: 8,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada Teks 1 dan Teks 2)",
+      pertanyaan: "Manakah argumen atau bukti pendukung yang digunakan penulis dalam masing-masing teks? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Teks 1 menyertakan data penurunan perundungan siber sebagai bukti keberhasilan kebijakan loker gawai.",
+        "Teks 2 berargumen bahwa bimbingan guru diperlukan agar siswa mampu memanfaatkan gawai untuk verifikasi fakta.",
+        "Kedua teks sepakat bahwa siswa SMP belum memiliki kemampuan mengendalikan diri saat menggunakan internet.",
+        "Teks 1 menyatakan bahwa notifikasi digital dapat mengganggu konsentrasi mendalam siswa di kelas."
+      ],
+      kunci: [0, 1, 3],
+      pembahasan: "Opsi 1 sesuai kalimat kedua Teks 1; opsi 2 sesuai kalimat kedua Teks 2; opsi 4 sesuai kalimat terakhir Teks 1. Opsi 3 tidak dinyatakan eksplisit oleh kedua teks."
+    },
+    {
+      id: 9,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada Teks 1 dan Teks 2)",
+      pertanyaan: "Tentukan <b>Benar</b> atau <b>Salah</b> untuk pernyataan sintesis dari kedua teks berikut!",
+      pernyataan: [
+        "Kebijakan jalan tengah yang dapat diambil sekolah adalah membatasi gawai saat pelajaran umum, namun mengizinkannya pada sesi riset terbimbing.",
+        "Kedua penulis memiliki tujuan akhir yang bertolak belakang karena Teks 2 ingin siswa bebas bermain gawai saat jam istirahat.",
+        "Argumen Teks 1 bersifat lebih empiris karena didukung oleh persentase hasil survei dari sekolah percontohan."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Salah", "Benar"],
+      pembahasan: "1) Benar, menggabungkan manfaat fokus (Teks 1) dan literasi digital terbimbing (Teks 2). 2) Salah, Teks 2 tidak meminta kebebasan bermain, melainkan penggunaan untuk riset/kolaborasi di bawah pengawasan guru. 3) Benar, mencantumkan angka penurunan 60%."
+    },
+
+    // --- GRUP 4: TEKS PUISI MODERN (SOAL 10-12) ---
+    {
+      id: 10,
+      tipe: "PG",
+      stimulus: "<b>Bacalah puisi berikut untuk menjawab soal nomor 10 s.d. 12!</b><br><br><b>Catatan Musim Kemarau</b><br><i>Tanah ladang retak-retak serupa peta tua yang kehausan,<br>Daun-daun jati luruh satu per satu, menanggalkan baju hijaunya.<br>Di pematang sawah, Pak Tua menengadah menatap langit tanpa awan,<br>Menghitung bulir keringat yang jatuh lebih deras daripada hujan.<br>Namun tangannya tetap menggenggam cangkul, menyemai doa di sela debu,<br>Sebab ia percaya, langit tak pernah ingkar pada janji musim penghujan.</i>",
+      pertanyaan: "Majas hiperbola yang menggambarkan beratnya perjuangan tokoh dalam puisi tersebut terdapat pada larik ...",
+      opsi: [
+        "A. Tanah ladang retak-retak serupa peta tua yang kehausan",
+        "B. Daun-daun jati luruh satu per satu, menanggalkan baju hijaunya",
+        "C. Menghitung bulir keringat yang jatuh lebih deras daripada hujan",
+        "D. Sebab ia percaya, langit tak pernah ingkar pada janji musim penghujan"
+      ],
+      kunci: "C",
+      pembahasan: "Larik 'bulir keringat yang jatuh lebih deras daripada hujan' melebih-lebihkan keadaan (hiperbola) untuk menegaskan kerja keras petani di tengah kemarau."
+    },
+    {
+      id: 11,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada puisi 'Catatan Musim Kemarau')",
+      pertanyaan: "Makna tersirat dan nilai kehidupan yang terkandung dalam bait puisi tersebut adalah ... (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Ketabahan dan optimisme petani dalam menghadapi bencana kekeringan.",
+        "Keputusasaan masyarakat desa yang memilih meninggalkan lahan pertanian mereka.",
+        "Keyakinan spiritual bahwa setiap kesulitan alam memiliki batas waktu dan akan berganti harapan.",
+        "Gambaran nyata dampak musim kemarau panjang terhadap ekosistem dan pertanian."
+      ],
+      kunci: [0, 2, 3],
+      pembahasan: "Pak Tua tetap menggenggam cangkul dan percaya pada janji musim penghujan menunjukkan ketabahan (1) dan keyakinan (3), di tengah penggambaran kemarau (4). Opsi 2 bertentangan dengan isi puisi."
+    },
+    {
+      id: 12,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada puisi 'Catatan Musim Kemarau')",
+      pertanyaan: "Tentukan <b>Sesuai</b> atau <b>Tidak Sesuai</b> untuk analisis kebahasaan puisi berikut!",
+      pernyataan: [
+        "Larik pertama menggunakan majas simile (perumpamaan) dengan kata pembanding 'serupa'.",
+        "Frasa 'menanggalkan baju hijaunya' merupakan personifikasi yang menggambarkan pohon jati meranggas.",
+        "Nada keseluruhan puisi bersifat sinis dan menyalahkan alam atas gagal panen yang terjadi."
+      ],
+      kategori: ["Sesuai", "Tidak Sesuai"],
+      kunci: ["Sesuai", "Sesuai", "Tidak Sesuai"],
+      pembahasan: "1) Sesuai ('retak-retak serupa peta tua'). 2) Sesuai, pohon jati diibaratkan menanggalkan baju saat menggugurkan daun di kemarau. 3) Tidak Sesuai, nada puisi penuh ketabahan dan pengharapan."
+    },
+
+    // --- GRUP 5: TEKS EKSPLANASI / TEKNOLOGI (SOAL 13-15) ---
+    {
+      id: 13,
+      tipe: "PG",
+      stimulus: "<b>Bacalah teks berikut untuk menjawab soal nomor 13 s.d. 15!</b><br><br><b>Cara Kerja Sistem Peringatan Dini Tsunami (InaTEWS)</b><br>Indonesia berada di pertemuan tiga lempeng tektonik aktif dunia sehingga memiliki kerentanan tinggi terhadap gempa bumi bawah laut yang berpotensi memicu tsunami. Untuk meminimalkan korban jiwa, Badan Meteorologi, Klimatologi, dan Geofisika (BMKG) mengoperasikan sistem peringatan dini tsunami yang disebut InaTEWS. Sistem ini bekerja melalui integrasi jaringan sensor seismograf di darat serta sensor tekanan dasar laut (<i>tsunameter</i>) yang terhubung dengan pelampung permukaan (<i>buoy</i>).<br><br>Ketika gempa tektonik terjadi di dasar samudra, seismograf merekam gelombang seismik untuk menentukan lokasi pusat gempa, kedalaman, dan magnitudo dalam hitungan menit. Jika gempa memenuhi kriteria potensi tsunami—umumnya bermagnitudo di atas 7,0 dengan kedalaman dangkal—sistem segera memodelkan perkiraan waktu tiba dan ketinggian gelombang di garis pantai. Data tersebut kemudian diverifikasi oleh perubahan tekanan air laut yang ditangkap <i>tsunameter</i> sebelum disebarluaskan kepada pemerintah daerah dan masyarakat melalui sirine pantai, pesan singkat, serta aplikasi resmi dalam waktu kurang dari lima menit.",
+      pertanyaan: "Fungsi utama sensor tekanan dasar laut (<i>tsunameter</i>) dalam rangkaian kerja InaTEWS menurut teks adalah ...",
+      opsi: [
+        "mengukur kekuatan magnitudo gempa tektonik yang terjadi di daratan",
+        "memverifikasi keberadaan gelombang tsunami melalui perubahan tekanan air laut",
+        "membunyikan sirine peringatan secara otomatis di seluruh pesisir pantai",
+        "mencegah pergeseran lempeng tektonik agar tidak memicu gelombang pasang"
+      ],
+      kunci: "B",
+      pembahasan: "Pada kalimat ketiga paragraf kedua dijelaskan secara langsung bahwa data pemodelan gempa 'diverifikasi oleh perubahan tekanan air laut yang ditangkap tsunameter'."
+    },
+    {
+      id: 14,
+      tipe: "PGK_MCMA",
+      stimulus: "(Mengacu pada teks 'Cara Kerja Sistem Peringatan Dini Tsunami (InaTEWS)')",
+      pertanyaan: "Manakah kondisi gempa bumi bawah laut yang memicu sistem InaTEWS mengeluarkan pemodelan potensi tsunami? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Pusat gempa berada di dasar samudra atau wilayah perairan.",
+        "Kekuatan gempa umumnya memiliki magnitudo di atas 7,0.",
+        "Kedalaman pusat gempa tergolong dangkal.",
+        "Gempa terjadi akibat aktivitas gunung berapi di tengah daratan pulau."
+      ],
+      kunci: [0, 1, 2],
+      pembahasan: "Paragraf 2 menyebutkan kriteria potensi tsunami: gempa tektonik di dasar samudra (1), magnitudo umumnya di atas 7,0 (2), dan kedalaman dangkal (3)."
+    },
+    {
+      id: 15,
+      tipe: "PGK_KATEGORI",
+      stimulus: "(Mengacu pada teks 'Cara Kerja Sistem Peringatan Dini Tsunami (InaTEWS)')",
+      pertanyaan: "Tentukan <b>Benar</b> atau <b>Salah</b> mengenai alur kerja sistem InaTEWS berdasarkan teks!",
+      pernyataan: [
+        "Seismograf bekerja lebih awal mendeteksi gelombang gempa dibandingkan penyebaran peringatan ke masyarakat.",
+        "Informasi peringatan dini tsunami membutuhkan waktu lebih dari satu jam untuk sampai ke perangkat ponsel warga.",
+        "Kecepatan penyampaian informasi di bawah lima menit sangat krusial untuk memberi waktu evakuasi mandiri bagi warga pesisir."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Salah", "Benar"],
+      pembahasan: "1) Benar, seismograf merekam terlebih dahulu sebelum pemodelan dan penyebaran peringatan. 2) Salah, informasi disebarluaskan dalam waktu kurang dari lima menit. 3) Benar."
+    }
+  ],
+
+  matematika: [
+    {
+      id: 1,
+      tipe: "PG",
+      elemen: "Bilangan",
+      pertanyaan: "Sebuah mikroskop elektron mampu memperbesar bayangan benda hingga $2,5 \\times 10^4$ kali. Jika panjang sebenarnya suatu virus adalah $1,2 \\times 10^{-7}\\text{ m}$, maka panjang bayangan virus tersebut pada layar mikroskop dalam satuan milimeter adalah ...",
+      opsi: ["A. $0,3\\text{ mm}$", "B. $3\\text{ mm}$", "C. $30\\text{ mm}$", "D. $300\\text{ mm}$"],
+      kunci: "B",
+      pembahasan: "Panjang bayangan $= (1,2 \\times 10^{-7}\\text{ m}) \\times (2,5 \\times 10^4) = 3 \\times 10^{-3}\\text{ m}$. Karena $1\\text{ m} = 10^3\\text{ mm}$, maka $3 \\times 10^{-3} \\times 10^3\\text{ mm} = 3\\text{ mm}$."
+    },
+    {
+      id: 2,
+      tipe: "PG",
+      elemen: "Bilangan",
+      pertanyaan: "Bentuk sederhana dari $\\dfrac{6}{\\sqrt{5} - \\sqrt{2}}$ adalah ...",
+      opsi: ["A. $2(\\sqrt{5} - \\sqrt{2})$", "B. $2(\\sqrt{5} + \\sqrt{2})$", "C. $3(\\sqrt{5} + \\sqrt{2})$", "D. $6(\\sqrt{5} + \\sqrt{2})$"],
+      kunci: "B",
+      pembahasan: "Rasionalkan penyebut: $\\dfrac{6}{\\sqrt{5} - \\sqrt{2}} \\times \\dfrac{\\sqrt{5} + \\sqrt{2}}{\\sqrt{5} + \\sqrt{2}} = \\dfrac{6(\\sqrt{5} + \\sqrt{2})}{5 - 2} = \\dfrac{6(\\sqrt{5} + \\sqrt{2})}{3} = 2(\\sqrt{5} + \\sqrt{2})$."
+    },
+    {
+      id: 3,
+      tipe: "PGK_MCMA",
+      elemen: "Bilangan",
+      pertanyaan: "Sebuah peternakan memiliki persediaan pakan yang cukup untuk $40$ ekor sapi selama $15$ hari. Setelah $3$ hari, peternak menjual $10$ ekor sapinya. Manakah pernyataan berikut yang benar? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Sisa persediaan pakan setelah hari ke-3 cukup untuk memberi makan sapi yang tersisa selama $16$ hari.",
+        "Total waktu habisnya pakan sejak hari pertama menjadi $19$ hari.",
+        "Banyak sapi yang tersisa di peternakan adalah $30$ ekor.",
+        "Perbandingan antara jumlah sapi awal dan sapi tersisa adalah $3 : 4$."
+      ],
+      kunci: [0, 1, 2],
+      pembahasan: "Beban pakan awal $= 40 \\times 15 = 600$. Terpakai 3 hari $= 40 \\times 3 = 120$. Sisa pakan $= 480$. Sisa sapi $= 40 - 10 = 30$ ekor (Opsi 3 Benar). Sisa hari $= 480 : 30 = 16$ hari (Opsi 1 Benar). Total hari $= 3 + 16 = 19$ hari (Opsi 2 Benar). Perbandingan sapi awal : tersisa $= 40 : 30 = 4 : 3$ (Opsi 4 Salah)."
+    },
+    {
+      id: 4,
+      tipe: "PG",
+      elemen: "Aljabar",
+      pertanyaan: "Himpunan penyelesaian dari pertidaksamaan $\\dfrac{2x - 1}{3} - \\dfrac{x + 2}{2} \\le 1$ untuk $x$ bilangan bulat adalah ...",
+      opsi: [
+        "A. $\\{x \\mid x \\le 14, x \\in \\mathbb{Z}\\}$",
+        "B. $\\{x \\mid x \\ge 14, x \\in \\mathbb{Z}\\}$",
+        "C. $\\{x \\mid x \\le 2, x \\in \\mathbb{Z}\\}$",
+        "D. $\\{x \\mid x \\le 8, x \\in \\mathbb{Z}\\}$"
+      ],
+      kunci: "A",
+      pembahasan: "Kalikan kedua ruas dengan KPK penyebut (6): $2(2x - 1) - 3(x + 2) \\le 6 \\Rightarrow 4x - 2 - 3x - 6 \\le 6 \\Rightarrow x - 8 \\le 6 \\Rightarrow x \\le 14$."
+    },
+    {
+      id: 5,
+      tipe: "PG",
+      elemen: "Aljabar",
+      pertanyaan: "Jika $x + y = 7$ dan $xy = 10$, maka nilai dari $x^2 + y^2$ adalah ...",
+      opsi: ["A. $19$", "B. $29$", "C. $39$", "D. $49$"],
+      kunci: "B",
+      pembahasan: "Gunakan identitas aljabar: $(x + y)^2 = x^2 + 2xy + y^2 \\Rightarrow 7^2 = x^2 + y^2 + 2(10) \\Rightarrow 49 = x^2 + y^2 + 20 \\Rightarrow x^2 + y^2 = 29$."
+    },
+    {
+      id: 6,
+      tipe: "PGK_KATEGORI",
+      elemen: "Aljabar",
+      pertanyaan: "Suatu kultur bakteri membelah diri menjadi $2$ setiap $20$ menit. Pada pukul $08.00$ terdapat $15$ bakteri di dalam cawan petri. Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!",
+      pernyataan: [
+        "Pada pukul $09.00$, banyak bakteri di dalam cawan menjadi $120$ bakteri.",
+        "Banyak bakteri pada pukul $10.00$ adalah $960$ bakteri.",
+        "Rasio pertumbuhan jumlah bakteri setiap $20$ menit adalah $2$."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Benar", "Benar"],
+      pembahasan: "Pukul 08.00 ke 09.00 = 60 menit (3 kali pembelahan): $U_4 = 15 \\times 2^3 = 15 \\times 8 = 120$ (Benar). Pukul 08.00 ke 10.00 = 120 menit (6 kali pembelahan): $U_7 = 15 \\times 2^6 = 15 \\times 64 = 960$ (Benar). Rasio $r = 2$ (Benar)."
+    },
+    {
+      id: 7,
+      tipe: "PGK_MCMA",
+      elemen: "Aljabar",
+      pertanyaan: "Diketahui garis $g$ melalui titik $(2, -1)$ dan sejajar dengan garis $2x + y - 5 = 0$. Manakah pernyataan yang benar tentang garis $g$? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Gradien garis $g$ adalah $-2$.",
+        "Persamaan garis $g$ adalah $2x + y - 3 = 0$.",
+        "Garis $g$ memotong sumbu-$Y$ di titik $(0, 3)$.",
+        "Garis $g$ melalui titik $(3, -4)$."
+      ],
+      kunci: [0, 1, 2],
+      pembahasan: "Gradien garis $2x + y - 5 = 0$ adalah $m = -2$. Karena sejajar, $m_g = -2$ (Opsi 1 Benar). Persamaan garis $g$: $y - (-1) = -2(x - 2) \\Rightarrow y + 1 = -2x + 4 \\Rightarrow 2x + y - 3 = 0$ (Opsi 2 Benar). Jika $x = 0$, $y = 3 \\Rightarrow (0, 3)$ (Opsi 3 Benar). Jika $x = 3$, $y = -3 \\neq -4$ (Opsi 4 Salah)."
+    },
+    {
+      id: 8,
+      tipe: "PG",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Dua garis sejajar $k$ dan $l$ dipotong oleh garis transversal $m$. Diketahui sudut dalam sepihak yang terbentuk memiliki besar $(3x + 15)^\\circ$ dan $(2x + 25)^\\circ$. Besar sudut pelurus dari sudut yang terkecil di antara keduanya adalah ...",
+      opsi: ["A. $81^\\circ$", "B. $99^\\circ$", "C. $108^\\circ$", "D. $152^\\circ$"],
+      kunci: "B",
+      pembahasan: "Jumlah sudut dalam sepihak $= 180^\\circ$: $(3x + 15) + (2x + 25) = 180 \\Rightarrow 5x + 40 = 180 \\Rightarrow 5x = 140 \\Rightarrow x = 28$. Kedua sudut: $3(28)+15 = 99^\\circ$ dan $2(28)+25 = 81^\\circ$. Sudut terkecil adalah $81^\\circ$, sehingga pelurusnya adalah $180^\\circ - 81^\\circ = 99^\\circ$."
+    },
+    {
+      id: 9,
+      tipe: "PG",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Sebuah bandul logam padat terdiri dari gabungan tabung dan belahan bola (setengah bola) di bagian bawahnya dengan jari-jari alas yang sama yaitu $7\\text{ cm}$. Jika tinggi bagian tabung adalah $10\\text{ cm}$, maka volume bandul tersebut adalah ... ($\\pi = \\frac{22}{7}$)",
+      opsi: ["A. $1.540\\text{ cm}^3$", "B. $2.258,67\\text{ cm}^3$", "C. $2.977,33\\text{ cm}^3$", "D. $3.080\\text{ cm}^3$"],
+      kunci: "B",
+      pembahasan: "$V_{\\text{tabung}} = \\frac{22}{7} \\times 7^2 \\times 10 = 1.540\\text{ cm}^3$. $V_{\\frac{1}{2}\\text{bola}} = \\frac{2}{3} \\times \\frac{22}{7} \\times 7^3 = \\frac{2.156}{3} \\approx 718,67\\text{ cm}^3$. Volume total $= 1.540 + 718,67 = 2.258,67\\text{ cm}^3$."
+    },
+    {
+      id: 10,
+      tipe: "PGK_KATEGORI",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Sebuah limas segi empat beraturan $T.ABCD$ memiliki panjang rusuk alas $12\\text{ cm}$ dan tinggi limas $8\\text{ cm}$. Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!",
+      pernyataan: [
+        "Tinggi segitiga pada bidang sisi tegak limas adalah $10\\text{ cm}$.",
+        "Luas seluruh permukaan limas tersebut adalah $384\\text{ cm}^2$.",
+        "Volume limas tersebut adalah $1.152\\text{ cm}^3$."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Benar", "Salah"],
+      pembahasan: "Setengah rusuk alas $= 6\\text{ cm}$. Tinggi sisi tegak $t_{\\Delta} = \\sqrt{8^2 + 6^2} = 10\\text{ cm}$ (Benar). Luas permukaan $= L_{\\text{alas}} + 4 \\times L_{\\Delta} = (12 \\times 12) + 4(\\frac{1}{2} \\times 12 \\times 10) = 144 + 240 = 384\\text{ cm}^2$ (Benar). Volume $= \\frac{1}{3} \\times 144 \\times 8 = 384\\text{ cm}^3$ (Pernyataan 3 Salah)."
+    },
+    {
+      id: 11,
+      tipe: "PG",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Titik $P(4, -6)$ didilatasikan dengan pusat $O(0, 0)$ dan faktor skala $k = -\\frac{1}{2}$, kemudian dirotasikan sejauh $90^\\circ$ berlawanan arah jarum jam terhadap titik pusat $O(0, 0)$. Koordinat bayangan akhir titik $P$ adalah ...",
+      opsi: ["A. $(-3, -2)$", "B. $(3, -2)$", "C. $(-2, 3)$", "D. $(2, -3)$"],
+      kunci: "A",
+      pembahasan: "Dilatasi $[O, -\\frac{1}{2}]$: $P'(-\\frac{1}{2}(4), -\\frac{1}{2}(-6)) = P'(-2, 3)$. Rotasi $+90^\\circ$ pusat $O$: $(x, y) \\rightarrow (-y, x)$, sehingga $P''(-3, -2)$."
+    },
+    {
+      id: 12,
+      tipe: "PGK_MCMA",
+      elemen: "Geometri dan Pengukuran",
+      pertanyaan: "Sebuah foto berukuran $20\\text{ cm} \\times 30\\text{ cm}$ ditempel pada selembar karton. Di sebelah kiri, kanan, dan atas foto masih terdapat sisa karton selebar $2\\text{ cm}$. Jika foto dan karton sebangun, manakah pernyataan yang benar? (Pilih lebih dari satu jawaban benar)",
+      opsi: [
+        "Lebar karton adalah $24\\text{ cm}$.",
+        "Tinggi karton adalah $36\\text{ cm}$.",
+        "Lebar sisa karton di bagian bawah foto adalah $4\\text{ cm}$.",
+        "Perbandingan luas foto dan luas karton adalah $25 : 36$."
+      ],
+      kunci: [0, 1, 2, 3],
+      pembahasan: "Lebar karton $= 20 + 2 + 2 = 24\\text{ cm}$ (1 Benar). Karena sebangun: $\\frac{20}{24} = \\frac{30}{T} \\Rightarrow \\frac{5}{6} = \\frac{30}{T} \\Rightarrow T = 36\\text{ cm}$ (2 Benar). Sisa bawah $= 36 - 30 - 2 = 4\\text{ cm}$ (3 Benar). Perbandingan luas $= (\\frac{5}{6})^2 = 25 : 36$ (4 Benar)."
+    },
+    {
+      id: 13,
+      tipe: "PG",
+      elemen: "Data dan Peluang",
+      pertanyaan: "Dari $60$ kali percobaan pelemparan sebuah dadu bermata enam, muncul mata dadu bernomor prima sebanyak $33$ kali. Frekuensi relatif munculnya mata dadu bukan prima pada percobaan tersebut adalah ...",
+      opsi: ["A. $0,45$", "B. $0,50$", "C. $0,55$", "D. $0,65$"],
+      kunci: "A",
+      pembahasan: "Frekuensi muncul bukan prima $= 60 - 33 = 27$ kali. Frekuensi relatif $= \\frac{27}{60} = \\frac{9}{20} = 0,45$."
+    },
+    {
+      id: 14,
+      tipe: "PG",
+      elemen: "Data dan Peluang",
+      pertanyaan: "Dalam sebuah kotak terdapat $5$ bola bernomor $1$ sampai $5$. Jika diambil dua bola sekaligus secara acak, peluang terambilnya dua bola dengan jumlah nomor genap adalah ...",
+      opsi: ["A. $0,30$", "B. $0,40$", "C. $0,50$", "D. $0,60$"],
+      kunci: "B",
+      pembahasan: "Ruang sampel $\\binom{5}{2} = 10$ pasangan: $(1,2),(1,3),(1,4),(1,5),(2,3),(2,4),(2,5),(3,4),(3,5),(4,5)$. Jumlah genap terjadi jika keduanya ganjil atau keduanya genap: $(1,3), (1,5), (3,5), (2,4)$ ada $4$ kejadian. Peluang $= \\frac{4}{10} = 0,40$."
+    },
+    {
+      id: 15,
+      tipe: "PGK_KATEGORI",
+      elemen: "Data dan Peluang",
+      pertanyaan: "Tabel berikut menunjukkan nilai tes seleksi tim olimpiade dua kelompok belajar:<br><b>Kelompok A:</b> $70, 75, 80, 85, 90$<br><b>Kelompok B:</b> $60, 75, 80, 85, 100$<br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk perbandingan ukuran pemusatan dan penyebaran kedua kelompok tersebut!",
+      pernyataan: [
+        "Kedua kelompok memiliki nilai rata-rata (mean) dan median yang sama persis.",
+        "Jangkauan (range) data pada Kelompok B dua kali lebih besar daripada Kelompok A.",
+        "Sebaran nilai pada Kelompok A lebih merata dan stabil dibandingkan Kelompok B."
+      ],
+      kategori: ["Benar", "Salah"],
+      kunci: ["Benar", "Benar", "Benar"],
+      pembahasan: "Mean A $= 400/5 = 80$, Median A $= 80$. Mean B $= 400/5 = 80$, Median B $= 80$ (1 Benar). Range A $= 90 - 70 = 20$; Range B $= 100 - 60 = 40 = 2 \\times 20$ (2 Benar). Karena jangkauan A lebih kecil, nilainya lebih merata/stabil (3 Benar)."
+    }
+  ]
+};
